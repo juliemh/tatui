@@ -28,16 +28,28 @@
 
 <body>
 
-	<div id="wrapper">
-
+<div id="wrapper">
+           <header>
+            <div class="container"> 
+                <img class="rlogo" src="./assets/img/rmitlogo.png" alt="RMIT logo" />
+                         
+        
+                <img class="tlogo" src="./assets/img/tatlogo.png" alt="TAT logo" />
+            </div>
+  
+            <h2 class="welcome">Welcome <?php echo $firstname ?></h2></
+           </header>
 		<!-- Navigation -->
                 <nav>
+                    <div class="navContainer">
                     <div class="dropdown">
 			<button class="dropbtn">Admin Menu</button>
 			<div class="dropdown-content">
 				<a href="#">Manage Skills</a> 
                                 <a href="#">Register Projects</a>
 			</div>
-	</div>
+
+                    </div>
+           </div>
 	<!-- /.navbar-static-side -->
 	</nav>

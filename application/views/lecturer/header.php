@@ -28,10 +28,21 @@
 
 <body>
 
-	<div id="wrapper">
-
+	
+<div id="wrapper">
+           <header>
+            <div class="container"> 
+                <img class="rlogo" src="./assets/img/rmitlogo.png" alt="RMIT logo" />
+                         
+        
+                <img class="tlogo" src="./assets/img/tatlogo.png" alt="TAT logo" />
+            </div>
+  
+            <h2 class="welcome">Welcome <?php echo $firstname ?></h2></
+           </header>
 		<!-- Navigation -->
                 <nav>
+                    <div class="navContainer">
                     <div class="dropdown">
 			<button class="dropbtn">Lecturer Menu</button>
 			<div class="dropdown-content">
@@ -39,6 +50,7 @@
                                 <a href="#">Add Skill</a>
                                 <a href="#">Run Algorithm</a>
 			</div>
+                    </div>
 	</div>
 	<!-- end navigation -->
 	</nav>

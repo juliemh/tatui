@@ -8,8 +8,8 @@
 </div>
 <?php } ?>
 
-
-
+     <div class="formContainer">
+     <h2>Please log on...</h2>
 <form method="post" action="<?php echo base_url();?>login/validate" method="post" id="login">
     <div class="login-container">
    
@@ -30,3 +30,4 @@
    
 </form>
                 </div>
+ </div>

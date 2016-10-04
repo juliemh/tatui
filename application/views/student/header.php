@@ -29,37 +29,27 @@
 <body>
 
 	<div id="wrapper">
-            <div id="header">
-    <div class="container"> 
+           <header>
+            <div class="container"> 
                 <img class="rlogo" src="./assets/img/rmitlogo.png" alt="RMIT logo" />
                          
         
                 <img class="tlogo" src="./assets/img/tatlogo.png" alt="TAT logo" />
             </div>
-        <div id="header">
+  
             <h2 class="welcome">Welcome <?php echo $firstname ?></h2></
-        </span>
-        </div>
-    
-    
-</div>
-            
-             <div id="header">
-            <div class="container"> 
-                <img class="rlogo" src="./assets/img/rmitlogo.png" alt="RMIT logo" />
-                         
-        
-                        
-        </div>
+           </header>
 
 		<!-- Navigation -->
                 <nav>
+                    <div class="navContainer">
                     <div class="dropdown">
 			<button class="dropbtn">Student Menu</button>
 			<div class="dropdown-content">
 				<a href="#">Manage Skills</a> 
                                 <a href="#">Register Projects</a>
 			</div>
+                    </div>
 	</div>
 	<!-- /.navbar-static-side -->
 	</nav>
