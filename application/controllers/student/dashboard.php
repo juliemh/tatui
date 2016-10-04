@@ -6,7 +6,7 @@ class Dashboard extends CI_Controller {
     {
         parent::__construct();
 
-		if($this->session->userdata('user_is_logged_in')=='')
+		if($this->session->userdata('student_is_logged_in')=='')
 		{
 		$this->session->set_flashdata('msg','Please Login to Continue');
 		redirect('login');
