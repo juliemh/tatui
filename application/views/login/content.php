@@ -1,21 +1,15 @@
  <div id="page-wrapper">
 
 
-<?php $msg = $this->session->flashdata('msg'); if((isset($msg)) && (!empty($msg))) { ?>
-<div class="alert alert-success">
- <button class="close" data-dismiss="alert">x</button>
- <?php print_r($msg); ?>
-</div>
-<?php } ?>
 
      <div class="formContainer">
      <h2>Please log on...</h2>
-<form method="post" action="<?php echo base_url();?>login/validate" method="post" id="login">
+<form method="post" action="./login/validate" method="post" id="login">
     <div class="login-container">
    
       <div class='login-username-container'>
-        <label>Username</label>
-        <input autofocus placeholder='Username' type='text' name="username" required>
+        <label>Email</label>
+        <input autofocus placeholder='Username' type='text' name="email" required>
       </div>
     <div class='login-username-container'>
         <label>Password</label>
@@ -27,7 +21,47 @@
 
       </div>
     </div>
-   
 </form>
-                </div>
+    
+     <div class="message-container">
+    <?php $msg = $this->session->flashdata('msg1');
+if ((isset($msg)) && (!empty($msg))) { ?>
+    <div class="alert alert-danger">
+        <button class="close" data-dismiss="alert">x</button>
+    <?php print_r($msg); ?>
+    </div>
+<?php } ?>
+
+
+
+<?php $msg = $this->session->flashdata('msg');
+if ((isset($msg)) && (!empty($msg))) { ?>
+    <div class="alert alert-success">
+        <button class="close" data-dismiss="alert">x</button>
+    <?php print_r($msg); ?>
+    </div>
+<?php } ?>
+     </div>
+     
+        <div class="message-container">
+    <?php $msg = $this->session->flashdata('msg1');
+if ((isset($msg)) && (!empty($msg))) { ?>
+    <div class="alert alert-danger">
+        <button class="close" data-dismiss="alert">x</button>
+    <?php print_r($msg); ?>
+    </div>
+<?php } ?>
+
+
+
+<?php $msg = $this->session->flashdata('msg');
+if ((isset($msg)) && (!empty($msg))) { ?>
+    <div class="alert alert-success">
+        <button class="close" data-dismiss="alert">x</button>
+    <?php print_r($msg); ?>
+    </div>
+<?php } ?>
+            
+     </div>       
+     </div>         
  </div>

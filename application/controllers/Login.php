@@ -21,21 +21,21 @@ class Login extends CI_Controller {
 	 * @return void
 	 */
 	function validate() {
-		$username = $this->input->post ( 'Email' );
-		$password = $this->input->post ( 'Password' );
+		$email = $this->input->post ( 'email' );
+		$password = $this->input->post ( 'password' );
 		
-		$is_valid = $this->login_model->validate ( $username, $password );
+		$is_valid = $this->login_model->validate ($email, $password );
 		
 		if ($is_valid)/*If valid username and password set */
          {
-			$get_id = $this->login_model->get_id ( $username, $password );
+			$get_id = $this->login_model->get_id ( $email, $password );
 			
 			foreach ( $get_id as $val ) {
 				$userid = $val->UserID;
-				$username = $val->email;
-				$password = $val->password;
-				$type = $val->type;
-				$firstname = $val->FirstName;
+				$email = $val->Email;
+				$password = $val->Password;
+				$type = $val->Type;
+				$firstname = $val->Firstname;
 				$surname = $val->Surname;
 				
 				if ($type == 'admin') {
@@ -45,11 +45,11 @@ class Login extends CI_Controller {
 							'admin_password' => $password,
 							'admin_id' => $userid,
 							'admin_type' => $type,
-							'admin_email' => $username,
+							'admin_email' => $email,
 							'admin_id' => $userid,
 							'admin_is_logged_in' => true 
 					);
-					$this->session->set_userdata ( $data ); /* Here setting the Admin data in session */
+					$this->session->set_userdata ( $data ); /* Here setting the Admin datas in session */
 					redirect ( 'admin/dashboard' );
 				} elseif ($type == 'lecturer') {
 					$data = array (
@@ -58,22 +58,22 @@ class Login extends CI_Controller {
 							'lecturer_password' => $password,
 							'lecturer_id' => $userid,
 							'lecturer_type' => $type,
-							'lecturer_email' => $username,
+							'lecturer_email' => $email,
 							'lecturer_is_logged_in' => true 
 					);
-					$this->session->set_userdata ( $data ); /* Here setting the lecturer data values in session */
+					$this->session->set_userdata ( $data ); /* Here setting the staff datas values in session */
 					redirect ( 'lecturer/dashboard' );
 				} else {
 					$data = array (
 							'student_first' => $firstname,
-							'student-last' => $surname,
+							'student_last' => $surname,
 							'student_password' => $password,
 							'student_id' => $userid,
 							'student_type' => $type,
-							'student_email' => $username,
+							'student_email' => $email,
 							'student_is_logged_in' => true 
 					);
-					$this->session->set_userdata ( $data ); /* Here setting the student data values in session */
+					$this->session->set_userdata ( $data ); /* Here setting the staff datas values in session */
 					redirect ( 'student/dashboard' );
 				}
 			}

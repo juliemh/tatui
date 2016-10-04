@@ -9,16 +9,19 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Team Allocation Tool|Student </title>
+<title>Team Allocation Tool|Login </title>
 
 <!-- Core CSS -->
 <link type="text/css" href="assets/css/tatui.css" rel="stylesheet">
 
+<link type="text/css" href="assets/css/bootstrap.css" rel="stylesheet">
 <!-- Custom Fonts -->
 <link href="assets/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css">
 
 <script src="assets/js/jquery-2.1.3.min.js"></script>
+
+<script src="assets/js/bootstrap.min.js"></script>
 
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
