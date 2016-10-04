@@ -9,7 +9,7 @@ class Dashboard extends CI_Controller {
         
           /*session checks */ 
 
-    if($this->session->userdata('is_logged_in')=='')
+    if($this->session->userdata('admin_is_logged_in')=='')
     {
      $this->session->set_flashdata('msg','Please Login to Continue');
      redirect('login');
