@@ -49,7 +49,7 @@ class Login extends CI_Controller {
 							'admin_id' => $userid,
 							'admin_is_logged_in' => true 
 					);
-					$this->session->set_userdata ( $data ); /* Here setting the Admin datas in session */
+					$this->session->set_userdata ( $data ); /* Here setting the Admin data in session */
 					redirect ( 'admin/dashboard' );
 				} elseif ($type == 'lecturer') {
 					$data = array (
@@ -61,7 +61,7 @@ class Login extends CI_Controller {
 							'lecturer_email' => $username,
 							'lecturer_is_logged_in' => true 
 					);
-					$this->session->set_userdata ( $data ); /* Here setting the staff datas values in session */
+					$this->session->set_userdata ( $data ); /* Here setting the lecturer data values in session */
 					redirect ( 'lecturer/dashboard' );
 				} else {
 					$data = array (
@@ -73,7 +73,7 @@ class Login extends CI_Controller {
 							'student_email' => $username,
 							'student_is_logged_in' => true 
 					);
-					$this->session->set_userdata ( $data ); /* Here setting the staff datas values in session */
+					$this->session->set_userdata ( $data ); /* Here setting the student data values in session */
 					redirect ( 'student/dashboard' );
 				}
 			}
@@ -84,51 +84,7 @@ class Login extends CI_Controller {
 			redirect ( 'login' );
 		}
 	}
-	public function getType($userid, $username, $password, $type, $firstname, $surname) {
-		switch ($type) {
-			case "admin" :
-				$data = array (
-						'admin_first' => $firstname,
-						'admin_last' => $surname,
-						'admin_password' => $password,
-						'admin_id' => $userid,
-						'admin_type' => $type,
-						'admin_email' => $username,
-						'admin_id' => $userid,
-						'admin_is_logged_in' => true 
-				);
-				$this->session->set_userdata ( $data ); /* Here setting the Admin datas in session */
-				redirect ( 'admin/dashboard' );
-				break;
-			case "student" :
-				$data = array (
-						'student_first' => $firstname,
-						'student-last' => $surname,
-						'student_password' => $password,
-						'student_id' => $userid,
-						'student_type' => $type,
-						'student_email' => $username,
-						'student_is_logged_in' => true 
-				);
-				$this->session->set_userdata ( $data ); /* Here setting the staff datas values in session */
-				redirect ( 'student/dashboard' );
-				break;
-			
-			case "lecturer" :
-				$data = array (
-						'lecturer_first' => $firstname,
-						'lecturer_last' => $surname,
-						'lecturer_password' => $password,
-						'lecturer_id' => $userid,
-						'lecturer_type' => $type,
-						'lecturer_email' => $username,
-						'lecturer_is_logged_in' => true 
-				);
-				$this->session->set_userdata ( $data ); /* Here setting the staff datas values in session */
-				redirect ( 'lecturer/dashboard' );
-				break;
-		}
-	}
+	
 	/**
 	 * Unset the session, and logout the user.
 	 *
