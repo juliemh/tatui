@@ -1,7 +1,7 @@
 <div id="page-wrapper">
    
  <div class="box">
-    <div class="header purple">
+    <div class="head purple">
     <span>
     <i class="fa fa-plus fa-5x"></i>
     <h3>Add Projects</h3>
@@ -18,7 +18,7 @@
     </div>
 
     <div class="box">
-    <div class="header blue">
+    <div class="head blue">
     <span>
     <i class="fa fa-plus-square-o fa-5x"></i>
     <h3>Add Skill</h3>
@@ -36,9 +36,9 @@
    
    
     <div class="box">
-        <div class="header orange">
+        <div class="head orange">
     <span>
-    <i class="fa fa-plus-upload fa-5x"></i>
+    <i class="fa fa-play fa-5x"></i>
     <h3>Run Algorithm</h3>
     </span>
     </div>
