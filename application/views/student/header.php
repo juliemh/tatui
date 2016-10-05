@@ -47,7 +47,11 @@
   
             <h2 class="welcome">Welcome <?php echo $this->session->userdata('student_first');?></h2>
            </header>
-
+            <div class="logout">
+                <a href="<?php echo base_url('login/student_logout')?>" class="btn logoutbtn">Click me to Logout</a>
+		
+		
+            </div>
 		<!-- Navigation -->
                 <nav>
                     <div class="navContainer">
