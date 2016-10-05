@@ -102,7 +102,7 @@ class Login extends CI_Controller {
 		);
 		
 		$this->session->unset_userdata ( $array_items );
-		$this->session->set_flashdata ( 'msg', 'Admin Signed Out Now!' );
+		$this->session->set_flashdata ( 'msg', 'Admin is Signed Out Now!' );
 		redirect ( 'login' );
 	}
 	public function student_logout() {
@@ -118,7 +118,7 @@ class Login extends CI_Controller {
 		);
 		
 		$this->session->unset_userdata ( $array_items );
-		$this->session->set_flashdata ( 'msg', 'Student  Out Now!' );
+		$this->session->set_flashdata ( 'msg', 'Student is Logged  Out Now!' );
 		redirect ( 'login' );
 	}
 	public function lecturer_logout() {
@@ -134,7 +134,7 @@ class Login extends CI_Controller {
 		);
 		
 		$this->session->unset_userdata ( $array_items );
-		$this->session->set_flashdata ( 'msg', 'Student  Out Now!' );
+		$this->session->set_flashdata ( 'msg', 'Lecturer is Logged  Out Now!' );
 		redirect ( 'login' );
 	}
 }
