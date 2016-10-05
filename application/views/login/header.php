@@ -39,12 +39,14 @@
     
         <header>
             <div class="container"> 
+                 <h2 class="welcome">Welcome to the Team Allocation Tool</h2>
                 <img class="rlogo" src="./assets/img/rmitlogo.png" alt="RMIT logo" />
                          
         
                 <img class="tlogo" src="./assets/img/tatlogo.png" alt="TAT logo" />
+                       
             </div>
-            <h2 class="welcome">Welcome to the Team Allocation Tool</h2>
+
             
         </header>
 
