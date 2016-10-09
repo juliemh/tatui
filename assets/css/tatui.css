@@ -63,17 +63,18 @@ ul {
 #wrapper
 {
     width:100%;
+  
 }
 
 #page-wrapper
 {
-    position:relative;
-    padding: 0 .1em;
-    min-height: 60%;
-    width:85%;
-    left:15%;
-    top:25%;
-    position: fixed
+    left: 27em;
+    min-height: 37em;
+    padding: 0 0.1em;
+    position: fixed;
+    top: 12em;
+    width: 50em;
+    overflow-y: scroll
     
 }
 
@@ -183,7 +184,8 @@ nav {
     float:right;
     right: 2em;
     position: relative;
-    padding-top: 1em;
+    padding-top: 2em;
+    padding-bottom: 2em;
   
 }
 
@@ -276,7 +278,7 @@ nav {
 
 .login-username-container {
   float: left;
-width: 100%;
+  width: 100%;
   height: auto;
   padding: 1em;
 }
@@ -286,4 +288,37 @@ width: 100%;
     margin-top: 15em;
     position: relative;
     width: 20em;
+}
+
+
+/*mobile devices */
+@media screen and (min-width : 320px) and (max-width : 480px)
+{
+    nav {
+       top:8em;
+        left:0;
+        width:100%;
+    }
+    
+    .navContainer {
+    float: left;
+    margin-top: 1em;
+    padding-left: 5em;
+}
+.dropbtn {
+     width: 100%;
+}
+
+
+
+}
+
+@media screen and (min-width : 480px)
+{
+    
+}
+ 	
+@media screen and (min-width : 1224px)
+{
+    
 }
