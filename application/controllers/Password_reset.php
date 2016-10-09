@@ -22,15 +22,16 @@ class Login extends CI_Controller
    
         $message = "";
         $display = 'loginform';
-        $this->form_validation->set_rules('userid', 'Userid', 'required|min_length[7]|max_length[7]');
+        $module = '/dashboard';
+        $this->form_validation->set_rules('userid', 'Userid', 'required|min_length[7]|max_length[57]');
         $this->form_validation->set_rules('password', 'Password', 'required|min_length[8]');
         if ($this->form_validation->run() == FALSE) {
 		  $data = array(
              'page_title' => 'Welcome!',
-             'title' => 'Login Page',
-            // 'message' => 'Please login to access dashboard',
+             'title' => 'Welcome to the Login Page',
+             //'message' => 'Please login to access dashboard',
           );
-          $this->construct_pages($display, $data);
+          $this->construct_pages($display, $data, $module);
         }
         else
         {        
@@ -58,20 +59,21 @@ class Login extends CI_Controller
         );
              $this->session->set_userdata($sess_data);
              $display = $this->getuser->userlevel($userid);
+             
              $data = array(
              'page_title' => 'Welcome!',
-             'title' => 'Login Page',
+            // 'title' => 'Login Page',
             // 'message' => 'Please login to access dashboard'
           );
-           $this->construct_pages($display.'/dashboard', $data);
+           $this->construct_pages($display, $data, $module);
         } 
         else 
         // runs build in validation          
            {
 		  $data = array(
              'page_title' => 'Welcome!',
-             'title' => 'Login Page',
-            // 'message' => 'Please login to access dashboard',
+             //'title' => 'Login Page',
+             //'message' => 'Please login to access dashboard',
           );
           $this->construct_pages($display, $data);
         }
@@ -97,10 +99,10 @@ class Login extends CI_Controller
 			 if($emailresult){
 				 
 				$this->load->library('email');
-				$this->email->from('kimetc@gmail.com', 'taitu');
+				$this->email->from('kimetc@gmail.com', 'tatui');
 				$this->email->to($this->input->post('email'));
 				$this->email->subject('Reset Your Password');
-				$message2 = "<p>You are someone requested to change your password</p>";
+				$message2 = "<p>You oe someone requested to change your password</p>";
 				$message2.="<a href '".base_url()."reset_password/".$email."'>Click here to reset Your Password</a>";
 				$this->email->message($message2);
 				if($this->email->send()){
