@@ -21,7 +21,6 @@ class Login extends CI_Controller
     {
    
         $message = "";
-        
         $display = 'loginform';
         $this->form_validation->set_rules('userid', 'Userid', 'required|min_length[7]|max_length[7]');
         $this->form_validation->set_rules('password', 'Password', 'required|min_length[8]');
@@ -29,7 +28,7 @@ class Login extends CI_Controller
 		  $data = array(
              'page_title' => 'Welcome!',
              'title' => 'Login Page',
-            'message' => 'Please login to access dashboard',
+             'message' => 'Please login to access dashboard',
           );
           $this->construct_pages($display, $data);
         }
@@ -53,10 +52,8 @@ class Login extends CI_Controller
         }
         // tests if input is valid and found
         if ( $passresult == true) {
-        $name = $this->getuser->getfirst($userid);
         $sess_data = array(
             'user' => $userid,
-            'first' => $name,
             'logged_in' => TRUE
         );
              $this->session->set_userdata($sess_data);
@@ -100,7 +97,7 @@ class Login extends CI_Controller
 			 if($emailresult){
 				 
 				$this->load->library('email');
-				$this->email->from('kimetc@gmail.com', 'taitu');
+				$this->email->from('testpv1001@gmail.com', 'taitu');
 				$this->email->to($this->input->post('email'));
 				$this->email->subject('Reset Your Password');
 				$message2 = "<p>You are someone requested to change your password</p>";
