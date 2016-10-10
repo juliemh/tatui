@@ -1,4 +1,3 @@
-<div id="page-wrapper">
 <?php 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
@@ -16,7 +15,7 @@ $userid = array(
     'size' => '25',
     'placeholder' => "Please enter username"
     );
-echo form_label('Email Address&nbsp;&nbsp;&nbsp;');
+echo form_label('Email Address');
 echo form_input($userid);
 echo "<br>";
 $password = array(
@@ -24,7 +23,7 @@ $password = array(
     'size' => '25',
     'placeholder' => 'Please enter password'
     );
-echo form_label('Password&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ');
+echo form_label('Passwor ');
 echo form_password($password);
 echo "<br>";
 echo form_submit('submit','Login');
