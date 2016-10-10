@@ -73,8 +73,8 @@ ul {
     padding: 0 0.1em;
     position: fixed;
     top: 12em;
-    width: 50em;
-    overflow-y: scroll
+    min-width: 50em;
+    overflow-y: auto
     
 }
 
