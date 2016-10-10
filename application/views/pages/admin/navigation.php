@@ -1,4 +1,8 @@
-
+<div class="logout">
+                <a href="<?php echo base_url('logout')?>" class="btn logoutbtn">Click me to Logout</a>
+		
+		
+            </div>
    		<!-- Navigation -->
                 <nav>
                     <div class="navContainer">
