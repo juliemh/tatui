@@ -1,8 +1,4 @@
-<div class="logout">
-                <a href="<?php echo base_url('logout')?>" class="btn logoutbtn">Click me to Logout</a>
-		
-		
-            </div>
+
    		<!-- Navigation -->
                 <nav>
                     <div class="navContainer">
@@ -10,8 +6,8 @@
 			<button class="dropbtn">Admin Menu</button>
 			<div class="dropdown-content">
 				<a href="#">Add Lecturer</a> 
-                                <a href="addcourse.php">Add Course</a>
-                                <a href="#">Add Subject</a>
+                                <a href="addcourse">Add Course</a>
+                                <a href="addsubject">Add Subject</a>
                                 <a href="#">Add Project</a>
                                 <a href="#">Add Skill</a>
                                 <a href="#">Import Students</a>
@@ -21,7 +17,11 @@
            </div>
 	<!-- /.navbar-static-side -->
 	</nav>
-                <div id="page-wrapper">
+    <div class="logout">
+                <a href="logout" class="btn logoutbtn">Click me to Logout</a>
+     </div>
+            <div id="page-wrapper">
+<?php echo form_open("addsubject/index", $attributes);?>
 <div class="formcontainer">
     <h2>Add Subjects  here...</h2>
     <form method="post" action="./addcourse/validate" id="login">
@@ -42,9 +42,15 @@
         <input placeholder='Description' type='text' name="description" size=100 required>
     </div>
         
+        <div class="logon-username-container" >
+            
+            <label for="courses">Course</label>
+           <?php $attributes = 'class="form-control" id="courses"';
+            echo form_dropdown('courses', $courses, set_value('courses'), $attributes); ?>
+        </div>
         <div class='login-username-container'>
         <button>Submit</button>
-        <button class="js-toggle-login" type="button">Cancel</button>
+        <button >Cancel</button>
 
       </div>
     </div>

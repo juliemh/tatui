@@ -1,8 +1,4 @@
-<div class="logout">
-                <a href="<?php echo base_url('logout')?>" class="btn logoutbtn">Click me to Logout</a>
-		
-		
-            </div>
+
    		<!-- Navigation -->
                 <nav>
                     <div class="navContainer">
@@ -10,8 +6,8 @@
 			<button class="dropbtn">Admin Menu</button>
 			<div class="dropdown-content">
 				<a href="#">Add Lecturer</a> 
-                                <a href="addcourse.php">Add Course</a>
-                                <a href="#">Add Subject</a>
+                                <a href="addcourse">Add Course</a>
+                                <a href="addsubject">Add Subject</a>
                                 <a href="#">Add Project</a>
                                 <a href="#">Add Skill</a>
                                 <a href="#">Import Students</a>
@@ -21,7 +17,10 @@
            </div>
 	<!-- /.navbar-static-side -->
 	</nav>
-                <div id="page-wrapper">
+    <div class="logout">
+                <a href="logout" class="btn logoutbtn">Click me to Logout</a>
+     </div>
+            <div id="page-wrapper">
 
     <div class="box">
 <div class="head blue">
@@ -44,6 +43,7 @@
 
     <div class="box">
 <div class="head green">
+     <a href="addcourse">
     <span>
     <i class="fa fa-plus-square fa-5x"></i>
     <h3>Add Course</h3>
@@ -51,7 +51,7 @@
     </div>
         <div class="bottom">
             <span>
-            <a href="addcourse">
+           
             <p>View details</p>
             <i class="fa fa-arrow-circle-right"></i>
             </a>
@@ -60,6 +60,7 @@
     </div>
     <div class="box">
 <div class="head yellow">
+    <a href="addsubject">
     <span>
     <i class="fa fa-plus-circle fa-5x"></i>
     <h3>Add Subjects</h3>
@@ -67,7 +68,7 @@
     </div>
         <div class="bottom">
             <span>
-            <a href="#">
+                
             <p>View details</p>
             <i class="fa fa-arrow-circle-right"></i>
             </a>
