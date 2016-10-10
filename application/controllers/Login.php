@@ -29,7 +29,7 @@ class Login extends CI_Controller
 		  $data = array(
              'page_title' => 'Welcome!',
              'title' => 'Login Page',
-            // 'message' => 'Please login to access dashboard',
+            'message' => 'Please login to access dashboard',
           );
           $this->construct_pages($display, $data);
         }
@@ -64,9 +64,9 @@ class Login extends CI_Controller
              $data = array(
              'page_title' => 'Welcome!',
              'title' => 'Login Page',
-            // 'message' => 'Please login to access dashboard'
+             'message' => 'Please login to access dashboard'
           );
-           $this->construct_pages($display.'/dashboard', $data);
+           $this->construct_pages($display, $data);
         } 
         else 
         // runs build in validation          
@@ -74,7 +74,7 @@ class Login extends CI_Controller
 		  $data = array(
              'page_title' => 'Welcome!',
              'title' => 'Login Page',
-            // 'message' => 'Please login to access dashboard',
+             'message' => 'Please login to access dashboard',
           );
           $this->construct_pages($display, $data);
         }
