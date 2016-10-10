@@ -22,7 +22,7 @@ class Pages extends CI_Controller {
 	  // this is called to specify different pages
 	   public function construct_pages($page, $data) {	       
           $this->load->view('templates/header', $data);
-          $this->load->view('pages/'.$page);
+          $this->loadl->view('pages/'.$page);
           $this->load->view('templates/footer');
 	  }
 }

@@ -21,6 +21,7 @@ class Login extends CI_Controller
     {
    
         $message = "";
+        
         $display = 'loginform';
         $this->form_validation->set_rules('userid', 'Userid', 'required|min_length[7]|max_length[7]');
         $this->form_validation->set_rules('password', 'Password', 'required|min_length[8]');
@@ -52,8 +53,10 @@ class Login extends CI_Controller
         }
         // tests if input is valid and found
         if ( $passresult == true) {
+        $name = $this->getuser->getfirst($userid);
         $sess_data = array(
             'user' => $userid,
+            'first' => $name,
             'logged_in' => TRUE
         );
              $this->session->set_userdata($sess_data);
