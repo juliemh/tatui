@@ -12,8 +12,8 @@ class Pages extends CI_Controller {
 	  {
 	      $data = array(
              'page_title' => 'Welcome!',
-            // 'title' => 'Login Page',
-            // 'message' => 'Please login to access dashboard'
+            'title' => 'Login Page',
+             'message' => 'Please login to access dashboard'
           );
           $page = '/loginform';
           
