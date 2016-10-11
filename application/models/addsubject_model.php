@@ -5,18 +5,20 @@ class Addsubject_model extends CI_Model
       
     function getCourses()
     {
-        $query = $this->db->get('courses');
-        $result = $query->result();
-
-        $courseid = array('-Select One -');
-     
-        
-        for ($i = 0; $i < count($result); $i++)
-        {
-            array_push($courseid, $result[$i]->CourseID);
+        $this->db->from('courses');
+        $this->db->order_by('CourseID');
+        $result = $this->db->get();
+        $drop= array();
+        if($result->num_rows()>0) {
+            foreach($result->result_array() as $row)
+            {
+                $drop[$row['CourseID']] = $row['CourseID'];
+            }
         }
-        return array($courseid);
-    }
+
+        return $drop;  
+        
+          }
     
     function validate($subjectid, $courseid)
 	{
