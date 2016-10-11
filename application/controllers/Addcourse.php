@@ -39,7 +39,7 @@ class Addcourse extends CI_Controller {
                			}
                 else // course already exists 
                 {	
-			$this->session->set_flashdata ( 'msg1', 'This Course already exists' );
+			$this->session->set_flashdata ( 'msg', 'This Course already exists' );
 			redirect ( 'addcourse' );
 		}
 	}
