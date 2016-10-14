@@ -22,15 +22,30 @@ class Addsubject_model extends CI_Model
     
     function validate($subjectid, $courseid)
 	{
+        $query=$this->db->get_where('subjects',array('SubjectID'=>$courseid)); 
+       
+         echo 'validate';
+        if($query->result())
+        {
+           foreach ($query->result_array() as $row)
+           {
+               if($row->CourseID == $courseid)
+               {
+                   return true;
+                   
+               }
+           }
+           
+        }
         
-        $sql = "select * subjects where subjectid = ? and courseid = ?;";
-    $query = $this->db->query($sql, array($subjectid, $courseid));
-             return $query->result();	
+        return false;
+        
 	}
 
 		
-	function add_subject($data)
+function add_subject($data)
         {
+    echo 'add subjed';
         $this->db->insert('subjects', $data);   		
         }
 }
