@@ -16,7 +16,7 @@
 
                     </div>
            </div>
-	<!-- /.navbar-static-side -->
+
 	</nav>
     <div class="logout">
                 <a href="logout" class="btn logoutbtn">Click me to Logout</a>
