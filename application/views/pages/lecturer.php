@@ -16,7 +16,7 @@
 			</div>
                     </div>
 	</div>
-	<!-- end navigation -->
+
 	</nav>
            <div id="page-wrapper">
    
@@ -71,7 +71,5 @@
             </span>
         </div>
     </div>
-
-   
 </div>
 
