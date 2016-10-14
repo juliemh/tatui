@@ -1,3 +1,4 @@
+<div class="page-wrapper">
 <?php 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
