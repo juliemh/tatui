@@ -1,4 +1,4 @@
-<?php if (! defined ( 'BASEPATH' )) exit ( 'No direct script access allowed' );
+<?php  defined ( 'BASEPATH' ) OR exit ( 'No direct script access allowed' );
 
 class Addcourse extends CI_Controller {
 	public function __construct() {
@@ -6,21 +6,24 @@ class Addcourse extends CI_Controller {
 		
 		$this->load->model ( 'addcourse_model' );
 	}
-	/*
-	 * Showing Login page here
-	 */
+	public function construct_pages($page, $data) {	       
+          $this->load->view('templates/header', $data);
+          $this->load->view('pages/'.$page);
+		  $this->load->view('templates/footer');
+	  }
+          
+          
 	function index() {
-		$this->load->view ( 'templates/header' );
-                $this->load->view ( 'pages/admin/navigation' );   
-                $this->load->view ( 'pages/admin/addcourse' );
-                $this->load->view ('templates/footer');
+            $display = 'addcourse';
+		 $data = array(
+             'page_title' => 'Admin Add Course',
+             'title' => 'Add Course',
+            
+          );
+          $this->construct_pages($display, $data);
 	}
 	
-	/**
-	 * check the username and the password with the database
-	 *
-	 * @return void
-	 */
+
 	function validate() {
 		$courseid = $this->input->post ( 'courseid' );
 		$description = $this->input->post ( 'description' );
@@ -34,9 +37,10 @@ class Addcourse extends CI_Controller {
                     'CourseDesc' => $description
                 );
                     $this->addcourse_model->add_course ( $data );
-                   redirect( 'addcourse');
+                  
                    $this->session->set_flashdata ('msg', 'The course '.$courseid. ' was successfully added');
-               			}
+               	 redirect( 'addcourse');
+                 }
                 else // course already exists 
                 {	
 			$this->session->set_flashdata ( 'msg', 'This Course already exists' );
