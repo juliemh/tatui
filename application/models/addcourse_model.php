@@ -22,7 +22,5 @@ class Addcourse_model extends CI_Model {
         // Inserting in Table(students) of Database(college)
         $this->db->insert('courses', $data);
           		
-        }
-
-		
+        }		
 }
