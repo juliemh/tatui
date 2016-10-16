@@ -1,0 +1,90 @@
+<div id="page-wrapper">
+			<?php echo validation_errors(); ?>
+			<form method="post" action="AddingProject">
+	
+			<table border="0" cellpadding="0">  
+			<tr>
+            <td align="right"><b> Select Course </b></td>
+            <td>
+			 <select name="course_name" value="<?php echo set_value('course_name'); ?>" >
+			<?php
+			echo "<option value=''> </option>";
+			foreach($result as $row)
+            {  
+			 echo "<option value='$row->course_name'>$row->course_name</option>"; 
+             
+			}?>
+			</select>			 
+			</td>  
+			</tr> 
+            <td align="right"><b> Select Subject </b></td>
+            <td><select name="Project_Subject" value="<?php echo set_value('Project_Subject'); ?>" >
+			<?php
+			echo "<option value=''> </option>";
+			foreach($subjects as $row)
+            {  
+			echo "<option value='$row->Subject_Name'>$row->Subject_Name</option>"; 
+			}
+			?>
+			</select> </td>
+			</tr>
+			 <tr>
+            <td align="right"><b> Project Start Date</b></td>
+            <td align="left"><input type="text" name="start_date"  value="<?php echo set_value('start_date'); ?>" /></td>
+			</tr>
+			 <tr>
+            <td align="right"><b> Project Finish Date</b></td>
+            <td align="left"><input type="text" name="finish_date"  value="<?php echo set_value('finish_date'); ?>" /></td>
+			</tr>
+			 <tr>
+            <td align="right"><b> Project Name</b></td>
+            <td align="left"><input type="text" name="project_name"  value="<?php echo set_value('project_name'); ?>" /></td>
+			</tr>
+		
+			<tr>
+            <td align="right"><b> Project Description</b></td>
+            <td align="left"> <textarea rows="4" cols="50" name="project_desc" value="<?php echo set_value('project_desc'); ?>" > </textarea></td>
+			</tr>
+		
+		
+			<tr>
+            <td align="right"><b>Select Lecturer</b></td>
+            <td><select name="project_lecturer" value="<?php echo set_value('project_lecturer'); ?>" >
+			<?php
+			echo "<option value=''> </option>";
+			foreach($results as $row)
+            {  	
+              echo "<option value='$row->Firstname$row->Lastname'>$row->Firstname $row->Lastname</option>"; 
+			}
+			?>
+			</select> </td>
+			</tr>   
+       
+		
+			<tr>
+            <td align="right"><b>Team Size</b></td>
+            <td align="left"><input type="text" name="team_size" value="<?php echo set_value('team_size'); ?>" /></td>
+  
+            </td>
+			<tr>
+            <td align="right"><b>Skills</b></td>
+            <td align="left"><select name="Skill_Name" value="<?php echo set_value('Skill_Name'); ?>" >
+			<?php
+			echo "<option value=''> </option>";
+			foreach($skills as $row)
+            {  	
+              echo "<option value='$row->skill_description'>$row->skill_description</option>"; 
+			}
+			?>
+			</select></td>
+  
+            </td>
+		
+  			</table>
+	  
+        <p>
+            <input type="submit" value="Add" name="submit"/>
+            <input type="reset" value="Reset" name="reset"/>
+		</p> 
+        </form>
+</div>
