@@ -1,0 +1,97 @@
+<?php
+class Model_Adding_Project extends CI_Model{
+	//tables in phpmyadamin//
+	protected $table= 'project';
+	protected $tables= 'project_skills';
+	
+	
+	function __construct()
+	{
+		
+		parent::__construct();
+		
+	}
+		//store data in the Project Table//
+		public function update($params)
+		{
+			$fields = array (
+			
+				'course_name' => $params ['course_name'],
+				'Project_Subject' => $params ['Project_Subject'],
+				'project_name' => $params ['project_name'],
+				'project_desc' => $params ['project_desc'],
+				'start_date' => $params ['start_date'],
+				'finish_date' => $params ['finish_date'],
+				'project_lecturer' => $params ['project_lecturer'],		
+				'team_size' => $params ['team_size']
+				
+			
+			);
+			
+			$this->db->insert($this->table,$fields);
+			
+		}
+		
+		//store data in the Skills Table//
+		public function updates($params)
+		{
+			$fieldss = array (
+			
+				'Skill_Name' => $params ['Skill_Name']
+				
+			);
+			
+			$this->db->insert($this->tables,$fieldss);
+			
+		}
+		
+		// To get all Courses in the database//
+		function getAllCourses()
+		
+		{
+        
+		$query=$this->db->query('SELECT * FROM Course');
+		$rows=$query->result();
+		$data=array('result'=>$rows);
+		return $query->result();
+		       
+		}
+	
+		// To get all Subjects in the database//
+		function getAllSubjects()
+		{
+        
+		$query=$this->db->query('SELECT * FROM subject');
+		$rows=$query->result();
+		$dataone=array('subjects'=>$rows);
+		return $query->result(); 
+		}
+	
+	
+		// To get all Lecturer in the database//
+		function getAllLecturer()
+    {
+        
+		$query=$this->db->query('select a.firstname, a.lastname from user a, user_access_level b where b.access_type = "lecturer" and a.user_id = b.user_id'); 
+		$rows=$query->result();
+		$dataone=array('results'=>$rows);
+		return $query->result();
+		  	 
+			
+        
+    }
+		//To get all Skills//
+		function getAllSkills()
+		{
+        
+		$query=$this->db->query('SELECT * FROM skill_dictionary');
+		$rows=$query->result();
+		$dataone=array('skills'=>$rows);
+		return $query->result();   
+		}
+		
+		
+}
+
+
+?>
