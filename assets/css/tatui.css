@@ -16,13 +16,25 @@
     src: url('fonts/DroidSerif-Bold.ttf')
     format('truetype');
 }
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
 body {
     background: #fff;
     font-size: 16px;
     font-family:'DroidSerif';
+    display: flex;
+    flex-direction: column;
 }
 
-html{font-size:100%;}
+html{
+    font-size:100%;
+    height: 100%;
+}
 @media(min-width:60em){html{font-size: 100%}}
 
 p {
@@ -66,22 +78,27 @@ ul {
   
 }
 
-#page-wrapper
-{
-    left: 27em;
-    min-height: 37em;
-    padding: 0 0.1em;
-    position: fixed;
-    top: 12em;
-    min-width: 50em;
-    overflow-y: auto
-    
+.main-content {
+    flex: 1 0 auto;
 }
 
+#page-wrapper
+{
+    left: 20%;
+    height: auto;
+    padding-top: 4em;
+    position: fixed;
+    width: 80%;
+    height: 60%;
+    overflow-y: auto;
+    flex: 1 0 auto; 
+}
+    
 header{
    padding:1em;
    height: 8em;
-  border-bottom: 1px solid #eaeaea
+  border-bottom: 1px solid #eaeaea;
+  flex: 0 0 auto;
 }
 
 header .container {
@@ -96,12 +113,16 @@ header .container {
 footer {
     bottom: 0;
     left: 0;
+    position: absolute;
     text-align: center;
     border-top: 1px solid #eaeaea;
-    position: absolute;
+    padding-top: 1em;
     width: 100%;
     font-size: 80%;
-    color: #666666
+    color: #666666;
+    flex: 0 0 auto;
+    height:10%;
+    background: #fff;
 }
 
 .rlogo {
@@ -125,18 +146,17 @@ footer {
     top: 1em;
  }
 nav {
-    float: left;
-    height: 20em;
+    height: 100%;
     left: 0;
-    position: fixed;
-    top: 11em;
-    width: 25em;
+    top: 8em;
+    width: 19%;
+    padding-top:1em;
 }
 
 .navContainer {
     float: left;
     margin-top: 1em;
-    padding-left: 5em;
+    padding-left: 1em;
 }
 .dropbtn {
     background-color: #333333;
@@ -200,42 +220,42 @@ nav {
     font-weight: 600;
 }
 
-.box {
-    width:30em;
+.d-box {
+    width:30%;
     height:auto;
     color: #333;
     padding: 1em;
     float:left    
 }
 
-.box .head {
-    height: 6em;
-    padding: 1em;
+.d-box .head {
+    height: auto;
+    padding: 1.5em;
     
 }
 
-.box .head h3 {
+.d-box .head h3 {
     float:right
 }
-.box .bottom {
-    height: 3em;
+.d-box .bottom {
+    height: auto;
     border: 1px solid #000;
-    padding: 1em;
+    padding: 1.5em;
 }
 
-.box .bottom a {
+.d-box .bottom a {
     text-decoration: none;
 }
-.box .bottom p {
+.d-box .bottom p {
     float: left;
 }
 
-.box .bottom i {
+.d-box .bottom i {
     float: right;
 }
 
-.box:hover {
-    background: #BDBDBD;
+.d-box:hover {
+    background: #EAF2F5;
 }
 
 .yellow {
@@ -262,6 +282,10 @@ nav {
    background:  #B18904
 }
 
+th, td {
+    padding: 15px;
+}
+
 .formContainer {
     left: 30%;
     top: 20%;
@@ -284,10 +308,10 @@ nav {
 }
 
 .message-container {
-      height: 0.5em;
+    height: 0.5em;
     margin-top: 15em;
     position: relative;
-    width: 20em;
+    width: 10em;
 }
 
 
@@ -308,17 +332,45 @@ nav {
 .dropbtn {
      width: 100%;
 }
-
+.box {
+    width:90%;
+    height:auto;
+    color: #333;
+    padding: 1em;
+    float:left    
+}
 
 
 }
 
-@media screen and (min-width : 480px)
+@media screen and (min-width : 480px) and (max-width : 1224px)
 {
+    nav {
+       top:8em;
+        left:0;
+        width:100%;
+    }
     
+    .navContainer {
+    float: left;
+    margin-top: 1em;
+    padding-left: 5em;
+}
+.dropbtn {
+     width: 100%;
+}
+
+.box {
+    width:90%;
+    height:auto;
+    color: #333;
+    padding: 1em;
+    float:left    
+}
 }
  	
 @media screen and (min-width : 1224px)
 {
-    
+   
+
 }
