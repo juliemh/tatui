@@ -1,26 +1,4 @@
-<div class="logout">
-                <a href="<?php echo base_url('logout')?>" class="btn logoutbtn">Click me to Logout</a>
-		
-		
-            </div>    	
-            </div>
-		<!-- Navigation -->
-                <nav>
-                    <div class="navContainer">
-                    <div class="dropdown">
-			<button class="dropbtn">Lecturer Menu</button>
-			<div class="dropdown-content">
-				<a href="#">Add Project</a> 
-                                <a href="#">Add Skill</a>
-                                <a href="#">Run Algorithm</a>
-			</div>
-                    </div>
-	</div>
-
-	</nav>
-           <div id="page-wrapper">
-   
- <div class="box">
+<div class="d-box">
     <div class="head purple">
     <span>
     <i class="fa fa-plus fa-5x"></i>
@@ -37,7 +15,7 @@
         </div>
     </div>
 
-    <div class="box">
+    <div class="d-box">
     <div class="head blue">
     <span>
     <i class="fa fa-plus-square-o fa-5x"></i>
@@ -55,7 +33,7 @@
     </div>
    
    
-    <div class="box">
+    <div class="d-box">
         <div class="head orange">
     <span>
     <i class="fa fa-play fa-5x"></i>
@@ -71,5 +49,3 @@
             </span>
         </div>
     </div>
-</div>
-
