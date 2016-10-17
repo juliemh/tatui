@@ -34,9 +34,6 @@
 
 <body>
 
-	<div id="wrapper">
-           
-    
         <header>
             <div class="container"> 
                 <img class="rlogo" src="<?php echo base_url() ?>assets/img/rmitlogo.png" alt="RMIT logo" />
@@ -47,7 +44,26 @@
   
             <h2 class="welcome">Welcome </h2>
            </header>
+            <section class="main-content">
           
+<div class="logout">
+                <a href="<?php echo base_url('logout')?>" class="btn logoutbtn">Logout</a>
+		
+		
+            </div>
+   		<!-- Navigation -->
+                <nav>
+                    <div class="navContainer">
+                    <div class="dropdown">
+			<button class="dropbtn">Menu</button>
+			<div class="dropdown-content">
+				<a href="#"></a> 
+                                <a href="<?php echo base_url() ?>dashboard">Dashboard</a>
+			</div>
 
+                    </div>
+           </div>
+	</nav> 
+<div id="page-wrapper">
 
 
