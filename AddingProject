@@ -1,0 +1,120 @@
+<?php
+
+class AddingProject extends CI_Controller {
+	
+	public function __construct ()
+	{
+		parent::__construct();
+		//This is the model for Adding a Project Task//
+		$this->load->model(array('Model_Adding_Project'));
+		
+		
+	}
+	//Johns Contruct Pages Code//
+	public function construct_pages($page, $data) {	       
+          $this->load->view('templates/header', $data);
+          $this->load->view('pages/'.$page);
+		  $this->load->view('templates/footer');
+	  }
+	
+	public function index()
+	{
+		//John page to display Adding Page//
+		$display = 'adding_Project';
+		 $data = array(
+             'page_title' => 'Admin Add Project',
+             'title' => 'Add Project',
+            
+    
+
+		//Variables for Adding a Project//  
+		$course_name = NULL;
+		$Project_Subject = NULL;
+		$project_name = NULL;
+		$project_desc = NULL;
+		$start_date = NULL;
+		$finish_date = NULL;
+		$project_lecturer = NULL;
+		$team_size = NULL;
+		
+		
+		
+		$Skill_Name = NULL;
+		
+		$submit =  NULL;
+		
+		extract($_POST);
+		
+		
+		$params['course_name'] = $course_name;
+		$params['Project_Subject'] = $Project_Subject;
+		$params['project_name'] = $project_name;
+		$params['project_desc'] = $project_desc;
+		$params['start_date'] = $start_date;
+		$params['finish_date'] = $finish_date;
+		$params['project_lecturer'] = $project_lecturer;
+		$params['team_size'] = $team_size;
+		
+		$params['Skill_Name'] = $Skill_Name;
+		
+		$this->load->helper(array('form', 'url'));
+
+        $this->load->library('form_validation');
+		 
+		 $this->form_validation->set_rules('course_namee', 'Project Course', 'required');
+		 $this->form_validation->set_rules('Project_Subject', 'Project Subject', 'required');
+		 $this->form_validation->set_rules('project_name', 'Project Name', 'required');
+		 $this->form_validation->set_rules('project_desc', 'Project Description', 'required');
+		 $this->form_validation->set_rules('project_lecturer', 'Project Lecturer', 'required');
+		 $this->form_validation->set_rules('start_date', 'Project Start', 'required');
+		 $this->form_validation->set_rules('finish_date', 'Project Finish', 'required');
+		 $this->form_validation->set_rules('team_size', 'Project Team', 'required');
+		 $this->form_validation->set_rules('Skill_Name', 'Project Skills', 'required');
+		
+				
+				
+		$data['result']= $this->Model_Adding_Project->getAllCourses();
+		$data['results']= $this->Model_Adding_Project->getAllLecturer();
+		$data['subjects']= $this->Model_Adding_Project->getAllSubjects();
+		$data['skills']= $this->Model_Adding_Project->getAllSkills();
+		
+		
+		if ($this->form_validation->run() == FALSE)
+                {
+					
+					$this->construct_pages($display, $data);
+				}
+		else
+                {
+					
+					
+					if (isset($submit))
+			
+						{
+							$this->Model_Adding_Project->update($params);
+							$this->Model_Adding_Project->updates($params);
+				
+						}
+					
+							$this->load->view('formsuccess');
+                
+				}
+		
+		
+		
+		
+		
+		
+        
+		
+		
+						
+
+	}
+	
+		
+
+	
+	
+}
+?>
