@@ -12,7 +12,7 @@ class Addcourse extends CI_Controller {
 		  $this->load->view('templates/footer');
 	  }
           
-          
+          //teest//
 	function index() {
             $display = 'addcourse';
 		 $data = array(
