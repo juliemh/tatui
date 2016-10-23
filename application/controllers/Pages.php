@@ -10,7 +10,7 @@ function __construct() {
 		$CI =& get_instance();
 		$CI->load->helper(array('form', 'url', 'html'));
 		$CI->load->library('form_validation');
-		$CI->load->model('get_user', '', TRUE);		
+		$CI->load->model('getuser', '', TRUE);		
 		$this->load->library('getnav');	
 	}	
 // calls login or page depending on context	
@@ -20,7 +20,7 @@ function __construct() {
           if ($nav != '') {
               $this->load->view('templates/nav', $nav);
           }
-		  $this->load->view('templates/content');
+		 $this->load->view('templates/content');
 		  $this->load->view('templates/footer');		  
     } 
 //
