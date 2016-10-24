@@ -1,16 +1,20 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Getuser extends CI_Model {
-   
+class Get_user extends CI_Model {  
+
+   public function __construct()
+        {
+                // Call the CI_Model constructor
+                parent::__construct();
+                $this->load->database();
+        }
    // get user name    
-   public function getuserid($userid) {
-   
-	   $this -> db -> select('userid');
-	   $this -> db -> from('Users');
-	   $this -> db -> where('userID', $userid);
+   public function get_user($userid) {
+ 	   $this -> db -> select('user_id');
+	   $this -> db -> from('user');
+	   $this -> db -> where('user_id', $userid);
 	   $this -> db -> limit(1);
- 
    $query = $this -> db -> get();
  
    if($query -> num_rows() == 1)
@@ -21,59 +25,12 @@ class Getuser extends CI_Model {
    {
      return false;
    }
-   }
-   
-    public function getfirst($userid) {
-   
-	   $this -> db -> select('firstname');
-	   $this -> db -> from('Users');
-	   $this -> db -> where('userID', $userid);
-	   $this -> db -> limit(1);
- 
-   $query = $this -> db -> get();
- 
-   if($query -> num_rows() == 1)
-   {
-     return $query->result();
-   }
-   else
-   {
-     return false;
-   }
-   }
-   public function getvalidEmail($emailId) {
-   
-	   $this -> db -> select('email');
-	   $this -> db -> from('Userss');
-	   $this -> db -> where('email', $emailId);
-	   $this -> db -> limit(1);
- 
-	   $query = $this -> db -> get();
-	
-	   if($query -> num_rows() == 1)
-	   {
-		 return $query->result();
-	   }
-	   else
-	   {
-		 return false;
-	   }
-   }
-   
-    public function reset_password() {
-	   $email = $this->input->post('reset_email'); 	
-	   $password = $this->input->post('password');
-	   $this -> db -> where('email', $email);
-	   $data = array('password'=>$password);
-	   $this -> db -> update('Students', $data);
-	   return($this->db->affected_rows()>0)?TRUE:FALSE;
    }
    // get password
-   public function getuserpassword($password) {
-   
+   public function get_password($userid, $password) { 
 	   $this -> db -> select('password');
-	   $this -> db -> from('Users');
-	   $this -> db -> where('password', $password);
+	   $this -> db -> from('user');
+	   $this -> db -> where('user_id', $userid);
 	   $this -> db -> limit(1);
  
    $query = $this -> db -> get();
@@ -87,17 +44,14 @@ class Getuser extends CI_Model {
      return false;
    }
    }
-   
-   
-   public function userlevel($userid) {
-   
-	   $this -> db -> select('Level');
-	   $this -> db -> from('Userlevel');
-	   $this -> db -> where('userID', $userid);
+   // returns the user access level
+   public function user_level($userid) {  
+	   $this -> db -> select('access_type');
+	   $this -> db -> from('access_type');
+	   $this -> db -> where('user_id', $userid);
 	   $query = $this -> db -> get();
-	   $level = $query->result();
-
-   return ($level[0]->Level);
+	   $access = $query->result();
+   return ($access[0]->access_type);
    }
 
 }
