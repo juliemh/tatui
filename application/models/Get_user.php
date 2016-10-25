@@ -51,7 +51,13 @@ class Get_user extends CI_Model {
 	   $this -> db -> where('user_id', $userid);
 	   $query = $this -> db -> get();
 	   $access = $query->result();
-   return ($access[0]->access_type);
+	   if ($access != NULL) {
+          return ($access[0]->access_type);
+          }
+       else{
+           $access = 'role_not_found';
+           return $access;
+           }
    }
 
 }
