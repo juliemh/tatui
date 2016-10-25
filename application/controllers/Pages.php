@@ -13,9 +13,10 @@ function __construct() {
 		$CI->load->model('getuser', '', TRUE);		
 		$this->load->library('getnav');	
 	}	
+//	
 // calls login or page depending on context	
-	 public function call_page($data, $nav) {
-	 	 
+//
+	 public function call_page($data, $nav) {	 	 
           $this->load->view('templates/header', $data);
           if ($nav != '') {
               $this->load->view('templates/nav', $nav);
@@ -41,16 +42,23 @@ public function set_user($userid) {
 		 // get user level for page access
 		$usertype = $this->get_user->user_level($userid);
 		// get nav
+		if ($usertype == "role_not_found") {
+		    $nav = '';
+		    $links = '';
+		}
+		else {
 		$links = $this->getnav->link_group($usertype); 
+		}
 		// set the navigation links data
 		$nav = array(
 			'links' => $links,
 			'page' => 'pages/nav'	            
 		);
+		
 		// page data to be passed will be usertype by default
 		$data = array(
 			'page_title' => 'Welcome!',
-			'title' => $usertype,
+			'title' => $userid,
 			'message' => '',
 			'includes' => 'pages/'.$usertype
 			   );
