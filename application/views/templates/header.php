@@ -46,11 +46,7 @@
            </header>
             <section class="main-content">
           
-<div class="logout">
-                <a href="<?php echo base_url('logout')?>" class="btn logoutbtn">Logout</a>
-		
-		
-            </div>
+
   <div id="page-wrapper">
 
 
