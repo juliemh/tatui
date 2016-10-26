@@ -66,6 +66,9 @@
             echo form_submit('submit', 'Delete Skill');
             echo form_close();
             ?>
+              <div class='login-username-container'>
+                    <a href="admin" class="btn logoutbtn">Back to Dashboard</a>
+                </div>   
         </div>
 
     </div>
