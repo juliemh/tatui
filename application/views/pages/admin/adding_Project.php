@@ -1,8 +1,8 @@
 
 <div id="page-wrapper">
-    <?php echo form_open('base_url(); addproject/validate'); ?>
+
     <?php echo validation_errors(); ?>
-    <form method="post">
+    <form method="post" action="./addproject/validate">
 
         <table border="0" cellpadding="0">  
             <tr>
@@ -87,7 +87,10 @@
         </p> 
     </form>
 
-<?php echo form_close(); ?>
+<div class='login-username-container'>
+                 <a href="admin" class="btn logoutbtn">Back to Dashboard</a>
+            </div>
+        </div>
 </div>
 
 <script type="text/javascript">
