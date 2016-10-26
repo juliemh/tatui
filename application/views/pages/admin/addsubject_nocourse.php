@@ -20,11 +20,11 @@
                     <input  type='text' name="description" size=100 required>
                 </div>
 
-
+              </div>
         </form>
 
  <div class='login-username-container'>
-                 <a href="pages" class="btn logoutbtn">Dashboard</a>
+                 <a href="pages" class="btn logoutbtn">Back to Dashboard</a>
             </div>
 
         
