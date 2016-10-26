@@ -51,19 +51,6 @@
 		
 		
             </div>
-   		<!-- Navigation -->
-                <nav>
-                    <div class="navContainer">
-                    <div class="dropdown">
-			<button class="dropbtn">Menu</button>
-			<div class="dropdown-content">
-				<a href="#"></a> 
-                                <a href="<?php echo base_url() ?>dashboard">Dashboard</a>
-			</div>
-
-                    </div>
-           </div>
-	</nav> 
-<div id="page-wrapper">
+  <div id="page-wrapper">
 
 
