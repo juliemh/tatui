@@ -23,10 +23,7 @@
 
                 <button name="submit" class="btn logoutbtn">  Submit  </button>
             </div>
-            <div class='login-username-container'>
-                 <a href="admin" class="btn logoutbtn">Dashboard</a>
-            </div>
-        </div>
+           
     </form>
 
 
