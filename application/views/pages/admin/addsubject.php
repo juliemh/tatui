@@ -33,7 +33,7 @@
                 </div>
                 
                 <div class='login-username-container'>
-                    <a href="admin" class="btn logoutbtn">Back to Dashboard</a>
+                    <a href="pages" class="btn logoutbtn">Back to Dashboard</a>
                 </div>   
             </div>
         </form>
