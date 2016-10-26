@@ -1,4 +1,5 @@
- <h1>What would you like to do?</h1>
+<div id="page-wrapper"> 
+<h1>What would you like to do?</h1>
     <div class="d-box">
 <div class="head blue">
     
