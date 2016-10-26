@@ -28,7 +28,7 @@
             </div>
         </div>
     </form>
-    <?php echo form_close(); ?>
+
 
     <div class="message-container">
 
