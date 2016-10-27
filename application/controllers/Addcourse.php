@@ -4,7 +4,7 @@ class Addcourse extends CI_Controller {
 	public function __construct() {
 		parent::__construct ();
 		
-		$this->load->model ( 'addcourse_model' );
+		$this->load->model ( 'Addcourse_model' );
 	}
 	public function call_page() {  
         $usertype = 'admin';
