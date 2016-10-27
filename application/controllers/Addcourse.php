@@ -4,32 +4,28 @@ class Addcourse extends CI_Controller {
 	public function __construct() {
 		parent::__construct ();
 		
-		$this->load->model ( 'Addcourse_model' );
+		$this->load->model ( 'addcourse_model' );
 	}
-	public function call_page() {  
-        $usertype = 'admin';
-		// page data to be passed will be usertype by default
-		$data = array(
-			'page_title' => 'Add Course!',
-			'title' => $usertype,
-			'message' => '',
-			'includes' => 'pages/'.$usertype.'/addcourse'
-			   );
-        $this->load->view('templates/header', $data);
-        $this->load->view( 'pages/'.$usertype.'/nav');
-		$this->load->view('templates/content');
-		$this->load->view('templates/footer');
-		
-    }
+	public function construct_pages($page, $data) {	       
+          $this->load->view('templates/header', $data);
+          $this->load->view('pages/'.$page);
+		  $this->load->view('templates/footer');
+	  }
+          
           
 	function index() {
-           
-          $this->call_page();
+            $display = 'addcourse';
+		 $data = array(
+             'page_title' => 'Admin Add Course',
+             'title' => 'Add Course',
+            
+          );
+          $this->construct_pages($display, $data);
 	}
 	
+
 	function validate() {
 		$courseid = $this->input->post ( 'courseid' );
-                $coursename = $this->input->post( 'coursename');
 		$description = $this->input->post ( 'description' );
 
 		$is_valid = $this->addcourse_model->validate ($courseid );
@@ -37,9 +33,8 @@ class Addcourse extends CI_Controller {
 		if (!$is_valid)/*If not valid then the course doesn't exist */
                 {
                     $data = array(
-                    'course_id' => $courseid,
-                    'course_name' => $coursename,
-                    'course_description' => $description
+                    'CourseID' => $courseid,
+                    'CourseDesc' => $description
                 );
                     $this->addcourse_model->add_course ( $data );
                   
