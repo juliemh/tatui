@@ -8,11 +8,11 @@
             <tr>
                 <td align="right"><b> Select Course </b></td>
                 <td>
-                    <label for="courseid">Course</label>
+                    <label for="course">Course</label>
                     <!-- ------------------------------------------------ -->
                     <!-- Cascasding Dropdown section -->
 
-                    <?php echo form_dropdown('courses', $courses, '', 'class="required" id="courses"'); ?>		
+                    <?php echo form_dropdown('course', $course, '', 'class="required" id="courses"'); ?>		
 
                     <!-- ------------------------------------------------ -->
                 </td>  
@@ -93,8 +93,8 @@
         $('#courses').change(function () {
             /*dropdown post */
             $.ajax({
-                url: "<?php echo base_url(); ?>index.php/addingproject/getSubjects",
-                data: {courseid: $(this).val()},
+                url: "<?php echo base_url(); ?>index.php/addproject/getSubjects",
+                data: {course: $(this).val()},
                 type: "POST",
                 success: function (data) {
 
