@@ -136,7 +136,7 @@ footer {
  .tlogo {
     max-width: 100%;
     position: fixed;
-    right: 2.5em;
+    left: 20%;
     top: 2em;
  }
    
@@ -148,9 +148,10 @@ footer {
 nav {
     height: 100%;
     left: 0;
-    top: 8em;
+    top: 11%;
     width: 19%;
     padding-top:1em;
+
 }
 
 .navContainer {
@@ -202,8 +203,9 @@ nav {
 
 .logout {
     float:right;
-    right: 2em;
-    position: relative;
+    right: 10%;
+    top:8%;
+    position: fixed;
     padding-top: 2em;
     padding-bottom: 2em;
   
@@ -217,7 +219,7 @@ nav {
 
 .logoutbtn:hover {
     background: #aeaeae;
-    font-weight: 600;
+
 }
 
 .d-box {
@@ -283,7 +285,7 @@ nav {
 }
 
 th, td {
-    padding: 15px;
+    padding: 15px!important;
 }
 
 .formContainer {
@@ -308,12 +310,13 @@ th, td {
 }
 
 .message-container {
-    height: 0.5em;
-    margin-top: 15em;
-    position: relative;
-    width: 10em;
+    margin-top: 0;
+    width: 80%;
 }
 
+.alert {
+    margin-bottom: 10px !important;
+}
 
 /*mobile devices */
 @media screen and (min-width : 320px) and (max-width : 480px)
