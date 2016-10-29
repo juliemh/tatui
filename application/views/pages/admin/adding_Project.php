@@ -1,4 +1,3 @@
-
 <div id="page-wrapper">
 
     <?php echo validation_errors(); ?>
@@ -47,20 +46,8 @@
                 <td align="left"> <textarea rows="4" cols="50" name="project_desc" value="<?php echo set_value('project_desc'); ?>" > </textarea></td>
             </tr>
             <tr>
-                <td align="right"><b>Select Lecturer</b></td>
-                <td><select name="project_lecturer" value="<?php echo set_value('project_lecturer'); ?>" >
-                        <?php
-                        echo "<option value=''> </option>";
-                        foreach ($results as $row) {
-                            echo "<option value='$row->Firstname$row->Lastname'>$row->Firstname $row->Lastname</option>";
-                        }
-                        ?>
-                    </select> </td>
-            </tr>   
-            <tr>
                 <td align="right"><b>Team Size</b></td>
                 <td align="left"><input type="text" name="team_size" value="<?php echo set_value('team_size'); ?>" /></td>
-
                 </td>
             <tr>
                 <td align="right"><b>Skills</b></td>
@@ -75,10 +62,8 @@
             </tr>
 
         </table>
-
-
-        <input type="submit" value="Add" name="submit"/>
-        <div class='login-username-container'>
+        <div class='login-username-container'> 
+            <input type="submit" class="btn" value="Add" name="submit"/>
             <a href="pages" class="btn logoutbtn">Back to Dashboard</a>
         </div>
     </form>

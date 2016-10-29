@@ -30,9 +30,6 @@
 
                 <div class='login-username-container'>
                     <button>Submit</button>
-                </div>
-                
-                <div class='login-username-container'>
                     <a href="pages" class="btn logoutbtn">Back to Dashboard</a>
                 </div>   
             </div>
@@ -49,11 +46,5 @@
             </div>
         <?php } ?>
     </div>
-
-
-
-
-
-
 
 </div>

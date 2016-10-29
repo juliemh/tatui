@@ -26,14 +26,6 @@
  <div class='login-username-container'>
                  <a href="pages" class="btn logoutbtn">Back to Dashboard</a>
             </div>
-
-        
+       
     </div>
-
-
-
-
-
-
-
 </div>
