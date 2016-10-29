@@ -28,12 +28,14 @@ class Addsubject_model extends CI_Model {
     }
 
     function validate($subjectid, $courseid) {
-        $query = $this->db->get_where('subject', array('subject_id' => $courseid));
-
-        echo 'validate';
+         $this->db->select('subject_id');
+        $this->db->where('course_id', $courseid);
+        $query = $this->db->get('course_subject');
+                
+                
         if ($query->result()) {
             foreach ($query->result_array() as $row) {
-                if ($row->course_id == $courseid) {
+                if ($row->subject_id == $subjectid) {
                     return true;
                 }
             }

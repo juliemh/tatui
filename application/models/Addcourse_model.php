@@ -13,7 +13,7 @@ class Addcourse_model extends CI_Model {
 		
 	function add_course($data){
         // Insert into course table
-        $this->db->insert('courses', $data);
+        $this->db->insert('course', $data);
           		
         }		
 }
