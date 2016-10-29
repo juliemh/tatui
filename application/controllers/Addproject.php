@@ -32,10 +32,7 @@ class Addproject extends CI_Controller {
                 'includes' => 'pages/' . $usertype . '/adding_Project'
             );
 
-            //$data['result']= $this->Model_Adding_Project->getAllCourses();
             $data['course'] = $this->Model_adding_project->getCourses();
-            $data['results'] = $this->Model_adding_project->getAllLecturer();
-            //$data['subjects']= $this->Model_Adding_Project->getAllSubjects();
             $data['skills'] = $this->Model_adding_project->getAllSkills();
 
             $this->form_validation->set_rules('project_id', 'Project ID', 'required');
@@ -50,19 +47,23 @@ class Addproject extends CI_Controller {
             $this->form_validation->set_rules('skills', 'Skills', 'callback_validate_checkbox');
             $this->call_page($data);
         } else {
-            echo 'error';
+            $data = array(
+                'page_title' => 'Add Project!',
+                'title' => $usertype,
+                'message' => '',
+                'includes' => 'pages/' . $usertype . '/addproject_error'
+            );;
         }
     }
 
     function validate() {
         //Variables for Adding a Project//  
 
-        $projectid = $this->input->post('project_id');
-        $projectname = $this->input->post('project_name');
-        $description = $this->input->post('description');
+        $projectid = strtoupper($this->input->post('project_id'));
+        $projectname = humanize( $this->input->post('project_name'));
+        $description = humanize( $this->input->post('description') );
         $subjectid = $this->input->post('subjectid');
         $courseid = $this->input->post('courseid');
-        $lecturerid = $this->input->post('lecturerid');
         $startDate = $this->input->post('startDate');
         $endDate = $this->input->post('endDate');
 
@@ -93,7 +94,7 @@ class Addproject extends CI_Controller {
     public function getSubjects() {
 
         //set selected country id from POST
-        $courseid = $this->input->post('courseid', TRUE);
+        $courseid = $this->input->post('course', TRUE);
         echo $courseid;
 
         //run the query for the cities we specified earlier

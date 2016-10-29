@@ -57,13 +57,11 @@ class Addsubject extends CI_Controller {
         $courseid = $this->input->post('course');
         echo $subjectid . ' ' . $description . ' ' . $courseid;
         $is_valid = $this->Addsubject_model->validate($subjectid, $courseid);
-        echo 'validation';
-        if (!$is_valid)/* If not valid then the subject and course combination doesn't exist */ {
+          if (!$is_valid)/* If not valid then the subject and course combination doesn't exist */ {
             $data = array(
                 'subject_id' => $subjectid,
                 'subject_name' => $subjectname,
                 'subject_description' => $description,
-                'course_id' => $courseid
             );
             $this->Addsubject_model->add_subject($data);
 

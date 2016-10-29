@@ -14,7 +14,7 @@ class Addcourse extends CI_Controller {
         $usertype = 'admin';
         // page data to be passed will be usertype by default
         $data = array(
-            'page_title' => 'Add Course!',
+            'page_title' => 'Add Course',
             'title' => $usertype,
             'message' => '',
             'includes' => 'pages/' . $usertype . '/addcourse'
@@ -26,12 +26,11 @@ class Addcourse extends CI_Controller {
     }
 
     function index() {
-
         $this->call_page();
     }
 
     function validate() {
-        $courseid = $this->input->post('courseid');
+        $courseid = strtoupper($this->input->post('courseid'));
         $coursename = $this->input->post('coursename');
         $description = $this->input->post('description');
 
@@ -52,5 +51,5 @@ class Addcourse extends CI_Controller {
             redirect('addcourse');
         }
     }
-
+   
 }
