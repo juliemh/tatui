@@ -1,7 +1,7 @@
 <div id="page-wrapper">
 
     <?php echo validation_errors(); ?>
-    <form method="post" action="addproject/validate'">
+    <form method="post" action="addproject/validate">
 
         <table border="0" cellpadding="0">  
             <tr>
@@ -63,8 +63,8 @@
 
         </table>
         <div class='login-username-container'> 
-            <input type="submit" class="btn" value="Add" name="submit"/>
             <a href="pages" class="btn logoutbtn">Back to Dashboard</a>
+            <input type="submit" class="btn" value="Add" name="submit"/>  
         </div>
     </form>
 

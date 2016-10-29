@@ -10,6 +10,8 @@
             <div class="dropdown-content">
                 <?php
                 defined('BASEPATH') OR exit('No direct script access allowed');
+                
+                echo anchor('addcourse', 'Add Course', 'title="Add Course"');
 
                 echo anchor('addproject', 'Add Project', 'title="Add Project"');
 
