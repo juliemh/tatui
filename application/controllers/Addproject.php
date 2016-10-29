@@ -68,7 +68,6 @@ class Addproject extends CI_Controller {
         $endDate = $this->input->post('endDate');
 
         $is_valid = $this->Model_adding_project->validate($projectid, $courseid, $subjectid);
-        echo 'validation';
 
         if (!$is_valid)/* If not valid then the subject and course combination doesn't exist */ {
             $data = array(
@@ -77,7 +76,6 @@ class Addproject extends CI_Controller {
                 'project_description' => $description,
                 'courses_id' => $courseid,
                 'subject_id' => $subjectid,
-                'user_id' => $lecturerid,
                 'startDate' => $startDate,
                 'endDate' => $endDate
             );

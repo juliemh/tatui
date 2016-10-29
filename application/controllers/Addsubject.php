@@ -51,11 +51,10 @@ class Addsubject extends CI_Controller {
     }
 
     function validate() {
-        $subjectid = $this->input->post('subject_id');
-        $subjectname = $this->input->post('subject_name');
-        $description = $this->input->post('subject_description');
+        $subjectid = $this->input->post('subjectid');
+        $subjectname = $this->input->post('subjectname');
+        $description = $this->input->post('description');
         $courseid = $this->input->post('course');
-        echo $subjectid . ' ' . $description . ' ' . $courseid;
         $is_valid = $this->Addsubject_model->validate($subjectid, $courseid);
           if (!$is_valid)/* If not valid then the subject and course combination doesn't exist */ {
             $data = array(
@@ -71,11 +70,10 @@ class Addsubject extends CI_Controller {
             );
 
             $this->Addsubject_model->add_subjectcourse($data1);
-
             $this->session->set_flashdata('msg', 'The subject ' . $subjectid . ' was successfully added');
             redirect('addsubject');
         } else { // course already exists 
-            $this->session->set_flashdata('msg', 'This Subject and Course combination already exists');
+            $this->session->set_flashdata('msg1', 'This Subject and Course combination already exists');
             redirect('addsubject');
         }
     }
