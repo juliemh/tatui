@@ -35,7 +35,7 @@ class Addsubject_model extends CI_Model {
                 
         if ($query->result()) {
             foreach ($query->result_array() as $row) {
-                if ($row->subject_id == $subjectid) {
+                if ($row['subject_id'] == $subjectid) {
                     return true;
                 }
             }
