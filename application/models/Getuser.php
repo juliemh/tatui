@@ -6,9 +6,9 @@ class Getuser extends CI_Model {
    // get user name    
    public function getuserid($userid) {
    
-	   $this -> db -> select('userid');
-	   $this -> db -> from('Users');
-	   $this -> db -> where('userID', $userid);
+	   $this -> db -> select('user_id');
+	   $this -> db -> from('user');
+	   $this -> db -> where('user_id', $userid);
 	   $this -> db -> limit(1);
  
    $query = $this -> db -> get();
@@ -22,6 +22,9 @@ class Getuser extends CI_Model {
      return false;
    }
    }
+   
+  
+  
    
     public function getfirst($userid) {
    
@@ -44,7 +47,7 @@ class Getuser extends CI_Model {
    public function getvalidEmail($emailId) {
    
 	   $this -> db -> select('email');
-	   $this -> db -> from('Userss');
+	   $this -> db -> from('users');
 	   $this -> db -> where('email', $emailId);
 	   $this -> db -> limit(1);
  
@@ -87,6 +90,30 @@ class Getuser extends CI_Model {
      return false;
    }
    }
+   
+ public function auth($password, $user_id) 
+	 {
+	   
+		   $this -> db -> select('password');
+		   $this -> db -> from('user');
+		   $this -> db -> where('user_id', $user_id);
+		
+	 
+	   $query = $this -> db -> get();
+	   $queryRes=$query->result();  
+	
+		$passCheck=$queryRes[0]->password;
+		
+	     if ( $passCheck == $password)
+		 	{
+		 		return true;
+		 	}
+	   
+	   else
+		   {
+		     return false;
+		   }
+	   }
    
    
    public function userlevel($userid) {

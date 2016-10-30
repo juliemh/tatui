@@ -138,7 +138,8 @@ class Login extends CI_Controller
 			
 			$this->load->model('getuser', '', TRUE);
 			$passwordResult = $this->getuser->reset_password();
-			if($passwordResult){
+			if($passwordResult == true)
+			{
 				
 				echo "Your Password Updated Successfully";
 			}
