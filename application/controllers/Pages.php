@@ -7,20 +7,19 @@ function __construct() {
 
 		parent::__construct(); 	
 						
-		$CI =& get_instance();
-		$CI->load->helper(array('form', 'url', 'html'));
-		$CI->load->library('form_validation');
-		$CI->load->model('getuser', '', TRUE);		
-		$this->load->library('getnav');	
+		$this->load->helper(array('form', 'url', 'html'));
+		$this->load->library('form_validation');
+		$this->load->model('get_user', '', TRUE);		
 	}	
+//	
 // calls login or page depending on context	
-	 public function call_page($data, $nav) {
-	 	 
+//
+	 public function call_page($data, $usertype) {	 	 
           $this->load->view('templates/header', $data);
-          if ($nav != '') {
-              $this->load->view('templates/nav', $nav);
+          if ($usertype != '') {
+              $this->load->view( 'pages/'.$usertype.'/nav');
           }
-		 $this->load->view('templates/content');
+		  $this->load->view('templates/content');
 		  $this->load->view('templates/footer');		  
     } 
 //
@@ -41,33 +40,28 @@ public function set_user($userid) {
 		 // get user level for page access
 		$usertype = $this->get_user->user_level($userid);
 		// get nav
-		$links = $this->getnav->link_group($usertype); 
-		// set the navigation links data
-		$nav = array(
-			'links' => $links,
-			'page' => 'pages/nav'	            
-		);
+	
 		// page data to be passed will be usertype by default
 		$data = array(
 			'page_title' => 'Welcome!',
-			'title' => $usertype,
+			'title' => $userid,
 			'message' => '',
 			'includes' => 'pages/'.$usertype
 			   );
-		$this->call_page($data, $nav);  
+		    $this->call_page($data, $usertype);  
 }
 //
 // exit validation only calls the login form
 // 
 public function exit_validate($message){
-       $nav = '';
+       $usertype = '';
        $data = array(
 			'page_title' => 'Welcome!',
 			'title' => 'Login Page',
 			'message' => $message,
 			'includes' => 'pages/loginform'
 			);
-		$this->call_page($data,$nav);
+		$this->call_page($data,$usertype);
       }
 //      
 // initial validation of user import
@@ -110,18 +104,13 @@ public function index() {
          $user = $this->session->userdata('user');
          if (isset($user)) {                     
              $usertype = $this->get_user->user_level($user);
-             $links = $this->getnav->link_group($usertype); 
-		            $nav = array(
-		                'links' => $links,
-                        'page' => 'pages/nav'	            
-		            );
                   $data = array(
                         'page_title' => 'Welcome!',
                         'title' => $usertype,
                         'message' => '',
                         'includes' => 'pages/'.$usertype
                        );
-		        $this->call_page($data, $nav);
+		        $this->call_page($data, $usertype);
          }
          else {
          // if there is no session data then do validation
