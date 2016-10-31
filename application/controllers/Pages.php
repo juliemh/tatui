@@ -25,9 +25,10 @@ function __construct() {
 //
 // set session
 //       
-public function set_session($userid) {
+public function set_session($userid, $firstname) {
     $sess_data = array(
 			 'user' => $userid,
+			 'firstname' => $firstname,
 			 'logged_in' => TRUE
 		 );
 		$this->session->set_userdata($sess_data);
@@ -36,7 +37,9 @@ public function set_session($userid) {
 // get user access level from database which is student, lecturer and admin     
 //
 public function set_user($userid) {		
-		$this->set_session($userid);
+	    $query = $this->get_user->get_user($userid);
+	    $name = $query[0]->firstname;
+		$this->set_session($userid, $name);
 		 // get user level for page access
 		$usertype = $this->get_user->user_level($userid);
 		// get nav
@@ -70,8 +73,8 @@ public function do_validation() {
       // start of validation
 	      $userid = $this->input->post('userid');
           $password = $this->input->post('password');
-          $this->form_validation->set_rules('userid', 'Userid', 'required|min_length[7]|max_length[7]');
-		  $this->form_validation->set_rules('password', 'Password', 'required|min_length[8]');		 		 
+          $this->form_validation->set_rules('userid', 'Userid', 'required|min_length[7]|max_length[32]');
+		  $this->form_validation->set_rules('password', 'Password', 'required|min_length[8]|max_length[32]');		 		 
 		 // basic validation
 		  if ($this->form_validation->run() == false) {
 		            $message = "";
@@ -84,15 +87,15 @@ public function do_validation() {
                        $this->exit_validate($message);
                        return false;
            }
-		 //
-           if ( ($this->get_user->get_password($userid, $password)) == false ) {
-		               $message = "user password not found";
-		               $this->exit_validate($message);
-		               return false;
+		 // checks if password is found
+           if ( true == $this->get_user->check_password($userid, $password)) {
+		               $this->set_user($userid);
                     }		
            else 
 		    {	              
-		               $this->set_user($userid);
+		               $message = "user password not found";
+		               $this->exit_validate($message);
+		               return false;	               
 		    } 
 
 }
