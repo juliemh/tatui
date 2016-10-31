@@ -11,7 +11,7 @@ class Get_user extends CI_Model {
         }
    // get user name    
    public function get_user($userid) {
- 	   $this -> db -> select('user_id');
+ 	   $this -> db -> select('*');
 	   $this -> db -> from('user');
 	   $this -> db -> where('user_id', $userid);
 	   $this -> db -> limit(1);
@@ -26,18 +26,18 @@ class Get_user extends CI_Model {
      return false;
    }
    }
-   // get password
-   public function get_password($userid, $password) { 
-	   $this -> db -> select('password');
+   // returns if password is found
+   public function check_password($userid, $password) { 
+	   $this -> db -> select('user_id');
 	   $this -> db -> from('user');
-	   $this -> db -> where('user_id', $userid);
+	   $this -> db -> where('password', $password);
 	   $this -> db -> limit(1);
  
    $query = $this -> db -> get();
  
    if($query -> num_rows() == 1)
    {
-     return $query->result();
+     return true;
    }
    else
    {
@@ -59,5 +59,14 @@ class Get_user extends CI_Model {
            return $access;
            }
    }
-
+   // insert user data
+   public function insert_data($table_name, $data_in) {
+         // inserts and array of strings
+         $this->db->insert_string($table_name, $data_in);   
+   }
+   // update user data
+   public function update_data($table_name, $data_in) {
+         // updates and array of strings
+         $this->db->update_string($table_name, $data_in);   
+   }
 }
