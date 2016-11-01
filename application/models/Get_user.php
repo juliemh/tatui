@@ -69,4 +69,32 @@ class Get_user extends CI_Model {
          // updates and array of strings
          $this->db->update_string($table_name, $data_in);   
    }
+   
+   // API AUTHENTICATION FUNCTION:
+   
+   public function auth($password, $user_id) 
+ 	 {
+ 	   
+ 		   $this -> db -> select('password');
+ 		   $this -> db -> from('user');
+ 		   $this -> db -> where('user_id', $user_id);
+ 		
+ 	 
+ 	   $query = $this -> db -> get();
+ 	   $queryRes=$query->result();  
+ 	
+ 		$passCheck=$queryRes[0]->password;
+ 		
+ 	     if ( $passCheck == $password)
+ 		 	{
+ 		 		return true;
+ 		 	}
+ 	   
+ 	   else
+ 		   {
+ 		     return false;
+ 		   }
+ 	   }
+   
+   
 }

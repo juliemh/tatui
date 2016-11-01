@@ -29,13 +29,13 @@ class Users extends REST_Controller
 		$password=$this->input->get('password');
 		
 		
-		$this->load->model('Getuser');
+		$this->load->model('Get_user');
 		
-		$exists=$this->Getuser->getuserid($email);
+		$exists=$this->Get_user->get_user($email);
 		
 		if ($exists != false)
 			{
-			$passok = $this->Getuser->auth($password, $email);
+			$passok = $this->Get_user->auth($password, $email);
 			}
 		else
 			{
