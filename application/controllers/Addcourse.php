@@ -1,51 +1,55 @@
-<?php  defined ( 'BASEPATH' ) OR exit ( 'No direct script access allowed' );
+<?php
+
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Addcourse extends CI_Controller {
-	public function __construct() {
-		parent::__construct ();
-		
-		$this->load->model ( 'addcourse_model' );
-	}
-	public function construct_pages($page, $data) {	       
-          $this->load->view('templates/header', $data);
-          $this->load->view('pages/'.$page);
-		  $this->load->view('templates/footer');
-	  }
-          
-          //teest//
-	function index() {
-            $display = 'addcourse';
-		 $data = array(
-             'page_title' => 'Admin Add Course',
-             'title' => 'Add Course',
-            
-          );
-          $this->construct_pages($display, $data);
-	}
-	
 
-	function validate() {
-		$courseid = $this->input->post ( 'courseid' );
-		$description = $this->input->post ( 'description' );
+    public function __construct() {
+        parent::__construct();
 
-		$is_valid = $this->addcourse_model->validate ($courseid );
-		
-		if (!$is_valid)/*If not valid then the course doesn't exist */
-                {
-                    $data = array(
-                    'CourseID' => $courseid,
-                    'CourseDesc' => $description
-                );
-                    $this->addcourse_model->add_course ( $data );
-                  
-                   $this->session->set_flashdata ('msg', 'The course '.$courseid. ' was successfully added');
-               	 redirect( 'addcourse');
-                 }
-                else // course already exists 
-                {	
-			$this->session->set_flashdata ( 'msg', 'This Course already exists' );
-			redirect ( 'addcourse' );
-		}
-	}
-	
+        $this->load->model('Addcourse_model');
+    }
+
+    public function call_page() {
+        $usertype = 'admin';
+        // page data to be passed will be usertype by default
+        $data = array(
+            'page_title' => 'Add Course',
+            'title' => $usertype,
+            'message' => '',
+            'includes' => 'pages/' . $usertype . '/addcourse'
+        );
+        $this->load->view('templates/header', $data);
+        $this->load->view('pages/' . $usertype . '/nav');
+        $this->load->view('templates/content');
+        $this->load->view('templates/footer');
+    }
+
+    function index() {
+        $this->call_page();
+    }
+
+    function validate() {
+        $courseid = strtoupper($this->input->post('courseid'));
+        $coursename = $this->input->post('coursename');
+        $description = $this->input->post('description');
+
+        $is_valid = $this->Addcourse_model->validate($courseid);
+
+        if (!$is_valid)/* If not valid then the course doesn't exist */ {
+            $data = array(
+                'course_id' => $courseid,
+                'course_name' => $coursename,
+                'course_description' => $description
+            );
+            $this->Addcourse_model->add_course($data);
+
+            $this->session->set_flashdata('msg', 'The course ' . $courseid . ' was successfully added');
+            redirect('addcourse');
+        } else { // course already exists 
+            $this->session->set_flashdata('msg1', 'This Course already exists');
+            redirect('addcourse');
+        }
+    }
+   
 }

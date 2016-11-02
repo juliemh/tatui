@@ -101,7 +101,7 @@ $config['rest_realm'] = 'REST API';
 |           authorization key
 |
 */
-$config['rest_auth'] = 'digest';
+$config['rest_auth'] = 'false';
 /*
 |--------------------------------------------------------------------------
 | REST Login Source
