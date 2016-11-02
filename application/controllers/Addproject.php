@@ -22,7 +22,7 @@ class Addproject extends CI_Controller {
         $usertype = 'admin';
         if ($this->Model_adding_project->chkempty('course') &&
                 $this->Model_adding_project->chkempty('subject') &&
-                $this->Model_adding_project->chkempty('skill_dictionary') && $this->Model_adding_project->chkempty('semester')) {
+                $this->Model_adding_project->chkempty('skill_dictionary')) {
             // page data to be passed will be usertype by default
             $data = array(
                 'page_title' => 'Add Project!',
@@ -32,18 +32,7 @@ class Addproject extends CI_Controller {
             );
             $data['course'] = $this->Model_adding_project->getCourses();
             $data['skills'] = $this->Model_adding_project->getSkills();
-            $data['semester'] = $this->Model_adding_project->getSemester();
-
-//            $this->form_validation->set_rules('project_id', 'Project ID', 'required');
-//            $this->form_validation->set_rules('project_name', 'Project Name', 'required');
-//            $this->form_validation->set_rules('project_desc', 'Project Description', 'required');
-//            $this->form_validation->set_rules('start_date', 'Project Start', 'required');
-//            $this->form_validation->set_rules('finish_date', 'Project Finish', 'required');
-//            $this->form_validation->set_rules('team_size', 'Project Team', 'required');
-//            $this->form_validation->set_rules('courses', 'Courses', 'callback_validate_dropdown');
-//            $this->form_validation->set_rules('subjects', 'Subjects', 'callback_validate_dropdown');
-//            $this->form_validation->set_rules('skills', 'Skills', 'callback_validate_radio');
-//            $this->form_validation->set_rules('teamsize', 'Teamsize', 'required');
+          
             $this->call_page($data);
         } else {
             $data = array(
@@ -64,13 +53,11 @@ class Addproject extends CI_Controller {
         $description = humanize($this->input->post('description'));
         $subjectid = $this->input->post('subject');
         $courseid = $this->input->post('course');
-        //  $semester = $this->input->post('semester');
         $startDate = @date('Y-m-d', @strtotime($this->input->post('startdate')));
 
         $finishDate = @date('Y-m-d', @strtotime($this->input->post('finishdate')));
         $teamsize = $this->input->post('team_size');
-        $this->session->set_flashdata('msg', 'Start is ' . $startDate . ' Finish date is ' . $finishDate);
-
+        
 
         if ($this->Model_adding_project->validate($projectid, $courseid, $subjectid)) {
             $this->session->set_flashdata('msg1', 'This Project, ' . projectid . ' and Course ' . $courseid . ' and Subject ' . $subjectid . ' combination already exists');
@@ -124,7 +111,6 @@ class Addproject extends CI_Controller {
 
     public function getSubjects() {
 
-        //set selected country id from POST
         $courseid = $this->input->post('course', TRUE);
         echo $courseid;
 
