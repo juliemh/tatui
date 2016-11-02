@@ -136,12 +136,12 @@ footer {
  .tlogo {
     max-width: 100%;
     position: fixed;
-    left: 20%;
+    left: 15%;
     top: 2em;
  }
    
  .welcome {
-    left: 15em;
+    left: 30%;
     position: fixed;
     top: 1em;
  }
@@ -285,7 +285,7 @@ nav {
 }
 
 th, td {
-    padding: 15px!important;
+    padding: 10px!important;
 }
 
 .formContainer {
