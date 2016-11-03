@@ -16,7 +16,7 @@
 
                     <!-- ------------------------------------------------ -->
                 </td>  
-            </tr> 
+          <!--  </tr>  -->
             <td align="right"><b> Select Subject </b></td>
             <td>
 
@@ -24,7 +24,7 @@
                     <option value="">Select</option>
                 </select>
             </td>
-            </tr>
+           </tr>
             
            <tr>
                 <td align="right"><b> Project Start Date</b></td>
@@ -32,8 +32,8 @@
                         <input type="text" class="form-control" name="startdate" />
                         <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
                     </div></td>
-            </tr>
-            <tr>
+        <!--    </tr>
+            <tr> -->
                 <td align="right"><b> Project Finish Date</b></td>
                 <td align="left"> <div class="input-group date">
                         <input type="text" class="form-control" name="finishdate" value="<?php echo set_value('finishdate'); ?>" />
@@ -43,24 +43,27 @@
             <tr>
                 <td align="right"><b> Project ID</b></td>
                 <td align="left"><input type="text" name="project_id"  value="<?php echo set_value('project_id'); ?>" required /></td>
-            </tr>
-            <tr>
+       <!--     </tr>
+            <tr> -->
                 <td align="right"><b> Project Name</b></td>
                 <td align="left"><input type="text" name="project_name"  value="<?php echo set_value('project_name'); ?>" required /></td>
             </tr>
 
             <tr>
                 <td align="right"><b> Project Description</b></td>
-                <td align="left"> <textarea rows="4" cols="50" name="project_desc" value="<?php echo set_value('project_desc'); ?>" required > </textarea></td>
+                <td align="left" colspan="3"> <textarea rows="4" cols="100" name="project_desc" value="<?php echo set_value('project_desc'); ?>" required > </textarea></td>
             </tr>
             <tr>
                 <td align="right"><b>Team Size</b></td>
                 <td align="left"><input type="text" name="team_size" value="<?php echo set_value('team_size'); ?>" required /></td>
                 </td>
         </table>
-        <table>
+        <table class="skilltable">
             <tr>
-                <th colspan="2">Skill Name</th><th>Beginner</th><th>Medium Level</th><th>Expert</th>
+                <th colspan="2" text-align="centre">Skill Name</th>
+                <th align="right">Beginner</th>
+                <th align="right">Medium Level</th>
+                <th align="right">Expert</th>
             </tr>
             <?php
             foreach ($skills as $row) {
