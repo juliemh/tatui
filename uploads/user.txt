@@ -1,0 +1,6 @@
+'s1234567@student.rmit.edu.au', 'password', 'Jenny', 'Smith', 'f', 'Sydney', NULL, NULL
+'john.long@student.rmit.edu.au', 'password', 'John', 'Long', 'm', 'Sydney', NULL, NULL
+'s5555555@student.rmit.edu.au', 'password', 'Jane', 'Doe', 'f', 'Sydney', NULL, NULL
+'s1348704@student.rmit.edu.au', 'password', 'Adam', 'Haddem', 'm', 'Sydney', NULL, NULL
+'s7482747@student.rmit.edu.au', 'password', 'Gerry', 'Goon', 'm', 'Sydney', NULL, NULL
+'s7744477@student.rmit.edu.au', 'password', 'Jane', 'Doe', 'f', 'Sydney', NULL, NULL
