@@ -12,16 +12,21 @@
  <title><?php echo $page_title; ?></title>
 
 <!-- Core CSS -->
-<link type="text/css" href="<?php echo base_url() ?>assets/css/bootstrap.css" rel="stylesheet">
-<link type="text/css" href="<?php echo base_url() ?>assets/css/tatui.css" rel="stylesheet">
+!-- Core CSS -->
+ <link type="text/css" href="<?php echo base_url() ?>assets/css/tatui.css" rel="stylesheet">
+        <link type="text/css" href="<?php echo base_url() ?>assets/css/bootstrap-datepicker3.min.css" rel="stylesheet">
 
+        <link type="text/css" href="<?php echo base_url() ?>assets/css/bootstrap.css" rel="stylesheet">
+        <!-- Custom Fonts -->
+        <link href="<?php echo base_url() ?>assets/css/font-awesome.min.css"
+              rel="stylesheet" type="text/css">
 
-<!-- Custom Fonts -->
-<link href="<?php echo base_url() ?>assets/css/font-awesome.min.css"
-	rel="stylesheet" type="text/css">
+        <script src="<?php echo base_url() ?>assets/js/jquery-2.1.3.min.js"></script>
 
-<script src="<?php echo base_url() ?>assets/js/jquery-3.1.1.min.js"></script>
-<script src="<?php echo base_url() ?>assets/js/bootstrap.min.js"></script>
+        <script src="<?php echo base_url() ?>assets/js/bootstrap.min.js"></script>
+        <script src="<?php echo base_url() ?>assets/js/bootstrap-datepicker.min.js"></script>
+        <script src="<?php echo base_url() ?>assets/js/locales/bootstrap-datepicker.en-AU.min.js"></script>
+
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
