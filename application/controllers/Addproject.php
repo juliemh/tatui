@@ -5,7 +5,7 @@ class Addproject extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->helper(array('form', 'url', 'html', 'inflector', 'date'));
-        $this->load->library(array('session', 'form_validation'));
+        $this->load->library('form_validation');
         $this->load->model('Model_adding_project');
     }
 
@@ -25,18 +25,18 @@ class Addproject extends CI_Controller {
                 $this->Model_adding_project->chkempty('skill_dictionary')) {
             // page data to be passed will be usertype by default
             $data = array(
-                'page_title' => 'Add Project',
+                'page_title' => 'Add Project!',
                 'title' => $usertype,
                 'message' => '',
                 'includes' => 'pages/' . $usertype . '/adding_Project'
             );
             $data['course'] = $this->Model_adding_project->getCourses();
             $data['skills'] = $this->Model_adding_project->getSkills();
-
+          
             $this->call_page($data);
         } else {
             $data = array(
-                'page_title' => 'Add Project',
+                'page_title' => 'Add Project!',
                 'title' => $usertype,
                 'message' => '',
                 'includes' => 'pages/' . $usertype . '/addproject_error'
@@ -45,101 +45,65 @@ class Addproject extends CI_Controller {
         }
     }
 
-    public function validate() {
+    function validate() {
         //Variables for Adding a Project//  
+
         $projectid = strtoupper($this->input->post('project_id'));
         $projectname = humanize($this->input->post('project_name'));
-        $description = humanize($this->input->post('project_desc'));
+        $description = humanize($this->input->post('description'));
         $subjectid = $this->input->post('subject');
         $courseid = $this->input->post('course');
         $startDate = @date('Y-m-d', @strtotime($this->input->post('startdate')));
+
         $finishDate = @date('Y-m-d', @strtotime($this->input->post('finishdate')));
         $teamsize = $this->input->post('team_size');
-        $skillcheck = $this->input->post('skillcheck');
-        $skillAddedMsg = array();
+        
 
-        $formdata = array(
-            'project_id' => $projectid,
-            'project_name' => $projectname,
-            'project_desc' => $description,
-            'subject_id' => $subjectid,
-            'course_id' => $courseid,
-            'start_date' => $startDate,
-            'finish_date' => $finishDate,
-            'team_size' => $teamsize
-        );
-
-        if ($this->Model_adding_project->validateThree($projectid, $courseid, $subjectid)) {
-            //$msg1 =  $this->session->set_flashdata('msg1', 'This Project, {projectid} and Course {$courseid} and Subject {$subjectid} combination already exists');
-            $data = array(
-                'msg1' => $this->session->set_flashdata('msg1', 'This Project ' . $projectid . ' and Course ' . $courseid . ' and Subject ' . $subjectid . ' combination already exists')
-            );
-            $this->session->set_flashdata($data);
-            redirect('addproject');
-        } else if ($this->Model_adding_project->validateProjCourse($projectid, $courseid)) {
-            $data = array(
-                'msg1' => 'This Project ' . $projectid . ', and Subject ' . $subjectid . ' combination already exists',
-            );
-            $this->session->set_flashdata($data);
-            redirect('addproject');
-        } else if ($this->Model_adding_project->validateProj($projectid)) {
-
-            $data = array(
-                'msg1' => 'This Project ' . $projectid . '  already exists',
-            );
-            $this->session->set_flashdata($data);
-            redirect('addproject');
-        } else if (count($skillcheck) == 0) {
-            $data = array(
-                'msg1' => 'Please select at least one skill'
-            );
-            $this->session->set_flashdata($data);
+        if ($this->Model_adding_project->validate($projectid, $courseid, $subjectid)) {
+            $this->session->set_flashdata('msg1', 'This Project, ' . projectid . ' and Course ' . $courseid . ' and Subject ' . $subjectid . ' combination already exists');
             redirect('addproject');
         } else {
-            foreach ($skillcheck as $row) {
-                if ($this->Model_adding_project->validateThreeskills($projectid, $row, $row)) {
-                    $data = array(
-                        'msg1' => 'That project, skills and skill levels already exist.'
-                    );
-                    $this->session->set_flashdata($data);
+            if ($this->Model_adding_project->validateProjCourse($projectid, $courseid)) {
+
+                $this->session->set_flashdata('msg1', 'This Project, ' . projectid . ' and Subject ' . $subjectid . ' combination already exists');
+                redirect('addproject');
+            } else {
+                if ($this->Model_adding_project->validateProj($projectid)) {
+                    $this->session->set_flashdata('msg1', 'This Project, ' . projectid . '  already exists');
                     redirect('addproject');
                 } else {
+                    $data = array(
+                        'project_id' => $projectid,
+                        'project_name' => $projectname,
+                        'project_desc' => $description,
+                        'course_id' => $courseid,
+                        'subject_id' => $subjectid,
+                        'start_date' => $startDate,
+                        'finish_date' => $finishDate,
+                        'team_size' => $teamsize
+                    );
 
-                    if ($this->Model_adding_project->validateTwoSkills($projectid, $row)) {
-                        $data = array(
-                            'msg1' => 'That project and skill already exist'
-                        );
-                        $this->session->set_flashdata($data);
+                    if ($this->Model_adding_project->add_project($data)) {
+
+                        if (!empty($this->input->post('skillcheck'))) {
+                            foreach ($this->input->post('skillcheck') as $value) {
+                                $skilldata = array(
+                                    'project_id' => $projectid,
+                                    'skill_id' => $value,
+                                    'skill_level' => $this->input->post($value)
+                                );
+                                if (!$this->Model_adding_project->add_project_skills($skilldata)) {
+                                    $this->session->set_flashdata('msg1', 'Unable to add the skills');
+                                    redirect('addproject');                                    
+                                }
+                            }
+                        }
+                        $this->session->set_flashdata('msg', 'The project ' . $projectid . ' was successfully added');
                         redirect('addproject');
                     } else {
-                        $skilldata = array(
-                            'project_id' => $projectid,
-                            'skill_id' => $row,
-                            'skill_level' => $this->input->post($row)
-                        );
-                        if ($this->Model_adding_project->add_project_skills($skilldata)) {
-                            $skillAddedMsg = array(
-                                'msg1' => 'Unable to add the skill '.$row. ' level '. $this->input->post($row)
-                            );
-                            
-                        }
+                        $this->session->set_flashdata('msg1', 'Unable to add the project ' . $projectid);
+                        redirect('addproject');
                     }
-                }
-                if ($this->Model_adding_project->add_project($formdata)) {
-                    $projAdded = array(
-                        'msg' => 'The project ' . $projectid . ' was successfully added'
-                    );
-                    $data = array(
-                       'proj' => $projAdded,
-                       'skill' => $skillAddedMsg
-                    );
-                    $this->session->set_flashdata($data);
-                    redirect('addproject');
-                } else {
-                    $data = array(
-                        'msg1' => 'Unable to add the project ' . $projectid);
-                    $this->session->set_flashdata($data);
-                    redirect('addproject');
                 }
             }
         }
