@@ -1,4 +1,3 @@
-<div id="page-wrapper">
     <div class="formcontainer">
         <h2>Add Course details here...</h2>
         <form method="post" action="./addcourse/validate" id="addcourse">
@@ -48,6 +47,6 @@
 
 
     </div>
-</div>
+
 
 
