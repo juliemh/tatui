@@ -1,7 +1,4 @@
-<div id="page-wrapper">
-
-      
-    <div class="formcontainer">
+  <div class="formcontainer">
         <h2>Uh oh!  It doesn't look like there are any courses in the database.  Please add some courses first.</h2>
         <form method="post" action="./addsubject/validate" id="addsubject">
             <div class="login-container">
@@ -28,4 +25,3 @@
             </div>
        
     </div>
-</div>
