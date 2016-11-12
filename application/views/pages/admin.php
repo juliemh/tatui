@@ -1,4 +1,3 @@
-<div id="page-wrapper"> 
 <h1>What would you like to do?</h1>
     <div class="d-box">
 <div class="head blue">
@@ -96,7 +95,7 @@
     </div>
         <div class="bottom">
             <span>
-            <a href="#">
+            <a href="addskill">
             <p>View details</p>
             <i class="fa fa-arrow-circle-right"></i>
             </a>
@@ -121,5 +120,22 @@
         </div>
             
     </div>
-</div>
+    <div class="d-box">
+   <div class="head gold">
+    <span>
+    <i class="fa fa-tasks fa-5x"></i>
+    <h3>Run Algorithm</h3>
+    </span>
+    </div>
+        
+        <div class="bottom">
+            <span>
+            <a href="runalgorithm"
+            <p>View details</p>
+            <i class="fa fa-arrow-circle-right"></i>
+            </a>
+            </span>
+        </div>
+            
+    </div>
 
