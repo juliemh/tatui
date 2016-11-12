@@ -57,13 +57,10 @@ class Model_adding_project extends CI_Model {
     }
 
     function add_project_skills($data) {
-
-
-        if (!$this->db->insert('project_skills', $data)) {
-         
-            return FALSE;
-        } else {
+        if ($this->db->insert('project_skills', $data)) {
             return TRUE;
+        } else {
+            return FALSE;
         }
     }
 
