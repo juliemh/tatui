@@ -1,6 +1,4 @@
-<div id="page-wrapper">
-
-    <div class="formcontainer">
+  <div class="formcontainer">
         <h2>Add Subjects  here...</h2>
         <form method="post" action="./addsubject/validate" id="addsubject">
             <div class="login-container">
@@ -51,5 +49,3 @@
         ?>
 
     </div>
-
-</div>
