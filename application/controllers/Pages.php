@@ -16,7 +16,7 @@ function __construct() {
 //
 	 public function call_page($data, $usertype) {	 	 
           $this->load->view('templates/header', $data);
-          if ($usertype != '') {
+          if ($usertype != '' && $usertype != NULL) {
               $this->load->view( 'pages/'.$usertype.'/nav');
           }
 		  $this->load->view('templates/content');
