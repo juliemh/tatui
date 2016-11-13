@@ -3,9 +3,7 @@
 
 foreach ($details as $row)
 {
-    
-
-?>
+ ?>
 
 <h6>Your Name is  <?php echo $row['firstname']." ".$row['lastname']; ?>
 <h6>Your RMIT email address is <?php echo $this->session->userdata('user'); ?></h6>
