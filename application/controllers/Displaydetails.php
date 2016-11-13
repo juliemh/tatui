@@ -7,7 +7,8 @@ class Displaydetails extends CI_Controller {
         $this->load->helper(array('form', 'url', 'html'));
         $this->load->model('Displaydetails_model');
     }
-   public function call_page($data) {
+
+    public function call_page($data) {
         $usertype = 'student';
         $this->load->view('templates/header', $data);
         $this->load->view('pages/' . $usertype . '/nav');
@@ -16,16 +17,26 @@ class Displaydetails extends CI_Controller {
     }
 
     function index() {
+
         $user = $this->session->userdata('user');
         $usertype = 'student';
-            $data = array(
-                'page_title' => 'Display My Details',
-                'title' => $usertype,
-                'message' => '',
-                'includes' => 'pages/' . $usertype . '/displayDetails'
-            );
-             $data['details'] = $this->Displaydetails_model->getData($user);
-             $data['subjects'] = $this->Displaydetails_model->getSubjects($user);
-             $this->call_page($data);
-       }
+        $data = array(
+            'page_title' => 'Display My Details',
+            'title' => $usertype,
+            'message' => '',
+            'includes' => 'pages/' . $usertype . '/displayDetails'
+        );
+        $data['details'] = $this->Displaydetails_model->getData($user);
+        if ($this->Displaydetails_model->userEnrolled($user)) {
+            $data['course'] = $this->Displaydetails_model->checkUserCourse($user);
+            $data['subjects'] = $this->Displaydetails_model->getSubjects($user);
+        } 
+        else
+        {
+            $data['course'] = '';
+            $data['subjects'] = '';
+        }
+        $this->call_page($data);
+    }
+
 }
