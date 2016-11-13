@@ -1,5 +1,26 @@
 <h2>Add a project here...</h2>    
 <div class="message-container">
+     <?php
+        $msg1 = $this->session->flashdata('msg1');
+        if ((isset($msg1)) && (!empty($msg1))) {
+            ?>
+            <div class="alert alert-danger">
+                <button class="close" data-dismiss="alert">x</button>
+                <?php print_r($msg1); ?>
+            </div>
+        <?php }
+        ?>
+
+        <?php
+        $msg = $this->session->flashdata('msg');
+        if ((isset($msg)) && (!empty($msg))) {
+            ?>
+            <div class="alert alert-success">
+                <button class="close" data-dismiss="alert">x</button>
+                <?php print_r($msg); ?>
+            </div>
+        <?php }
+        ?>
     <?php
     if ($this->session->flashdata()) {
        $addedMsg = $this->session->flashdata('addedMsg');
@@ -151,19 +172,7 @@ foreach ($skills as $row) {
     });
 
 </script>
-<script type="text/javascript">
 
-    function checkInput() {
-        $('#addproject').submit(function (e) {
-            e.preventDefault();
-            if ($('input[name="skillcheck[]"]:checked').length < 1) {
-                alert("Please enter at least one skill");
-            } else
-            {
-                $("#addproject")[0].submit();
-            }
-        }
-</script>
 <script type="text/javascript">
 
         $('input:radio').click(function () {
