@@ -57,13 +57,10 @@ class Model_adding_project extends CI_Model {
     }
 
     function add_project_skills($data) {
-
-
-        if (!$this->db->insert('project_skills', $data)) {
-         
-            return FALSE;
-        } else {
+        if ($this->db->insert('project_skills', $data)) {
             return TRUE;
+        } else {
+            return FALSE;
         }
     }
 
@@ -108,7 +105,7 @@ class Model_adding_project extends CI_Model {
         }
     }
 
-    function validate($projectid, $courseid, $subjectid) {
+    function validateThree($projectid, $courseid, $subjectid) {
         $this->db->select('project_id, course_id, subject_id');
         $this->db->where(array('project_id' => $projectid, ' course_id' => $courseid, 'subject_id' => $subjectid));
         $query = $this->db->get('project');
@@ -121,4 +118,29 @@ class Model_adding_project extends CI_Model {
         }
     }
 
+     function validateThreeskills($projectid, $skillid, $level) {
+        $this->db->select('project_id, skill_id, skill_level');
+        $this->db->where(array('project_id' => $projectid, ' skill_id' => $skillid, 'skill_level' => $level));
+        $query = $this->db->get('project_skills');
+
+        if ($query->result_array()) {
+
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
+    
+     function validateTwoSkills($projectid, $skillid) {
+        $this->db->select('project_id, skill_id');
+        $this->db->where(array('project_id' => $projectid, ' skill_id' => $skillid));
+        $query = $this->db->get('project_skills');
+
+        if ($query->result_array()) {
+
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
 }

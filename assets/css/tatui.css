@@ -3,6 +3,7 @@
     Author     : Julie.Headford
 */
 
+/*load local font */
 @font-face {
     font-family: 'DroidSerif';
     src:local('DroidSerif');
@@ -17,6 +18,7 @@
     format('truetype');
 }
 
+/*site settings */
 *{
 	margin: 0;
 	padding: 0;
@@ -31,17 +33,20 @@ body {
     flex-direction: column;
 }
 
+/*set base font size to 100% */
 html{
     font-size:100%;
     height: 100%;
 }
 @media(min-width:60em){html{font-size: 100%}}
 
+/*set default text to 120% (14pt) */
 p {
     font-size: 120%;
     line-height: 1.2;
 }
 
+/* set headings with colour and font % for responsive equipment */
 h1, h2, h3, h4, h5, h6 {
     color: #666666
 }
@@ -69,29 +74,33 @@ h6 {
     font-size: 115%;
 }
 
+/* set defalt line height for unordered lists */
 ul {
     line-height: 200%;
 }
+
+/*
 #wrapper
 {
     width:100%;
   
 }
+*/
 
+/* main element area */
 .main-content {
     flex: 1 0 auto;
 }
-
+ /* wrapper for the main content elements */
 #page-wrapper
 {
     left: 20%;
     height: auto;
-    padding-top: 4em;
     position: fixed;
     width: 80%;
     height: 60%;
     overflow-y: auto;
-    flex: 1 0 auto; 
+    top:25%;
 }
     
 header{
@@ -100,15 +109,6 @@ header{
   border-bottom: 1px solid #eaeaea;
   flex: 0 0 auto;
 }
-
-header .container {
-    height: 8em;
-    left: 0;
-    position: fixed;
-    top: 0;
-    width: 100%;
-}
-
 
 footer {
     bottom: 0;
@@ -125,6 +125,7 @@ footer {
     background: #fff;
 }
 
+/* rmit logo.  max-width 100% is for responsive screens */
 .rlogo {
     position: fixed;
     left: 2.5em;
@@ -133,18 +134,22 @@ footer {
     top: 2.5em;
    /* background: url('../img/RMITlogo.png');*/
     }
+    
+ /* team allocation tool logo.  100% is for resonsive screens */
  .tlogo {
     max-width: 100%;
     position: fixed;
     left: 15%;
     top: 2em;
  }
-   
+ 
+ /*positioning for the welcom message */
  .welcome {
     left: 30%;
     position: fixed;
     top: 1em;
  }
+ /*left hand navigation */
 nav {
     height: 100%;
     left: 0;
@@ -159,6 +164,8 @@ nav {
     margin-top: 1em;
     padding-left: 1em;
 }
+
+/*dropdown settings for the navigation */
 .dropbtn {
     background-color: #333333;
     color: #fff;
@@ -201,6 +208,7 @@ nav {
     background-color: #585858;
 }
 
+/*logout button positioning and settings */
 .logout {
     float:right;
     right: 10%;
@@ -221,19 +229,20 @@ nav {
     background: #aeaeae;
 
 }
+ /*coloured menu boxes settings */
 
 .d-box {
-    width:30%;
+    width:30%; /* use 30% for 3 wide */
     height:auto;
     color: #333;
     padding: 1em;
     float:left    
 }
-
+/*the boxes are split into top and bottom parts
+to ensure the elements stay in the correct positions */
 .d-box .head {
     height: auto;
     padding: 1.5em;
-    
 }
 
 .d-box .head h3 {
@@ -254,10 +263,6 @@ nav {
 
 .d-box .bottom i {
     float: right;
-}
-
-.d-box:hover {
-    background: #EAF2F5;
 }
 
 .yellow {
@@ -284,10 +289,18 @@ nav {
    background:  #B18904
 }
 
+/* padding for table elements */
 th, td {
     padding: 10px!important;
 }
 
+.skilltable {
+    position: relative;
+    margin-left: 5%;
+}
+
+
+/*container to hold the form elements in place */
 .formContainer {
     left: 30%;
     top: 20%;
@@ -295,13 +308,14 @@ th, td {
     width:60%;
     position: fixed
 }
-
+ /* spacing for form label and input elements */
 .login-container {
     float: left;
     top: 1%;
     padding:2%;
 }
 
+/* container to position the login elements */
 .login-username-container {
   float: left;
   width: 100%;
@@ -309,11 +323,14 @@ th, td {
   padding: 1em;
 }
 
+/* positioning for flashdata */
 .message-container {
+    position: relative;
     margin-top: 0;
     width: 80%;
 }
 
+/*position the alert icons */
 .alert {
     margin-bottom: 10px !important;
 }

@@ -1,7 +1,3 @@
-<div class="logout">
-    <a href='logout' class="btn logoutbtn">Click me to Logout</a>
-</div>
-
 <!-- Navigation -->
 <nav>
     <div class="navContainer">
@@ -11,19 +7,26 @@
                 <?php
                 defined('BASEPATH') OR exit('No direct script access allowed');
                 
-                echo anchor('addcourse', 'Add Course', 'title="Add Course"');
+                 echo anchor('pages', 'Dashboard', 'title="Dashboard"');
+                
+                echo anchor('manageusers', 'Manage Users', 'title="Manage Users"');
+
+                echo anchor('upload', 'Upload File', 'title="Import Data"');
+                
+                echo anchor('import', 'Import Data', 'title="Import Data"');
 
                 echo anchor('addproject', 'Add Project', 'title="Add Project"');
 
                 echo anchor('addsubject', 'Add Subject', 'title="Add Subject"');
 
-                echo anchor('importusers', 'Import Users', 'title="Import Users"');
-
                 echo anchor('addskill', 'Add Skill', 'title="Add Skill"');
-
-                echo anchor('pages', 'Dashboard', 'title="Dashboard"');
-
+                
+                echo anchor('addproject', 'Add Project', 'title="Add Project"');
+                
+                echo anchor('runalgorithm', 'Run Algorithm', 'title="Run Algorithm"');
+                
                 echo anchor('logout', 'Logout', 'title="Logout"');
+
                 ?>
             </div>
 

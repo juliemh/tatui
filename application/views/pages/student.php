@@ -1,17 +1,15 @@
-<div id="page-wrapper"> 
 <h1>What would you like to do?</h1>
    
     <div class="d-box">
 <div class="head yellow">
     <span>
-    <i class="fa fa-table fa-5x"></i>
+    <i class="fa fa-table fa-4x"></i>
     <h3>Display My Details</h3>
     </span>
-    </div>
-        
+    </div>  
         <div class="bottom">
             <span>
-            <a href="#"
+            <a href="displaydetails"
             <p>View details</p>
             <i class="fa fa-arrow-circle-right"></i>
             </a>
@@ -29,7 +27,7 @@
         
         <div class="bottom">
             <span>
-            <a href="#"
+            <a href="manageskills"
             <p>View details</p>
             <i class="fa fa-arrow-circle-right"></i>
             </a>
@@ -47,7 +45,7 @@
     </div>
         <div class="bottom">
             <span>
-            <a href="#">
+            <a href="registerprojects">
             <p>View details</p>
             <i class="fa fa-arrow-circle-right"></i>
             </a>
