@@ -14,10 +14,12 @@
                 echo anchor('upload', 'Upload File', 'title="Import Data"');
                 
                 echo anchor('import', 'Import Data', 'title="Import Data"');
+                
+                 echo anchor('addcourse', 'Add Course', 'title="Add Course"');
+                
+                echo anchor('addsubject', 'Add Subject', 'title="Add Subject"');
 
                 echo anchor('addproject', 'Add Project', 'title="Add Project"');
-
-                echo anchor('addsubject', 'Add Subject', 'title="Add Subject"');
 
                 echo anchor('addskill', 'Add Skill', 'title="Add Skill"');
                 
