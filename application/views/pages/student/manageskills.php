@@ -1,4 +1,8 @@
   <h2>Manage your skills here...</h2>
+  
+  <p>All available skills will display here.  Your selected skills will display with a filled in checkbox.</p>
+  <p>To update your skills simply make a selection and click Update.  Your screen will refresh with the updated skills.</p>
+  <p>To remove a skill click the delete option and click update.</p>
 <div class="formcontainer">
    
     <form id="skillselect" method="post" action="./manageskills/validate">
