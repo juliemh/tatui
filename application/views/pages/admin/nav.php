@@ -23,8 +23,6 @@
 
                 echo anchor('addskill', 'Add Skill', 'title="Add Skill"');
                 
-                echo anchor('addproject', 'Add Project', 'title="Add Project"');
-                
                 echo anchor('runalgorithm', 'Run Algorithm', 'title="Run Algorithm"');
                 
                 echo anchor('logout', 'Logout', 'title="Logout"');
