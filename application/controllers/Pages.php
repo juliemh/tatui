@@ -16,7 +16,7 @@ function __construct() {
 //
 	 public function call_page($data, $usertype) {	 	 
           $this->load->view('templates/header', $data);
-          if ($usertype != '' && $usertype != NULL) {
+          if ($usertype != '' && $usertype != 'loginform') {
               $this->load->view( 'pages/'.$usertype.'/nav');
           }
 		  $this->load->view('templates/content');
@@ -83,7 +83,7 @@ public function do_validation() {
 		      }
 	      // get user
 		   if ($this->get_user->get_user($userid) == false){		          
-		               $message = "user not found";
+		               $message = "User not found";
                        $this->exit_validate($message);
                        return false;
            }
@@ -93,7 +93,7 @@ public function do_validation() {
                     }		
            else 
 		    {	              
-		               $message = "user password not found";
+		               $message = "User password not found";
 		               $this->exit_validate($message);
 		               return false;	               
 		    } 
@@ -107,6 +107,14 @@ public function index() {
          $user = $this->session->userdata('user');
          if (isset($user)) {                     
              $usertype = $this->get_user->user_level($user);
+             //
+             // if session data is set for user not in database
+             //
+             if($usertype == NULL) {
+                $this->session->unset_userdata('user');
+                $this->session->sess_destroy();
+                $usertype = 'loginform';
+                     }
                   $data = array(
                         'page_title' => 'Welcome!',
                         'title' => $usertype,
@@ -116,7 +124,9 @@ public function index() {
 		        $this->call_page($data, $usertype);
          }
          else {
+         //
          // if there is no session data then do validation
+         //
              $message = '';
              $this->do_validation();
          }         
