@@ -1,11 +1,1 @@
-<!-- file import dialog -->
-
-<?php echo form_open_multipart('import');?>
-
-<input type="file" name="userfile" size="20" />
-
-<br /><br />
-
-<input type="submit" value="upload" />
-
-</form>
+<p>Import User Data Module</p>
