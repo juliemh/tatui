@@ -68,6 +68,22 @@
             </span>
         </div>
     </div>
+    <div class="d-box">
+    <div class="head gold">
+        <span>
+            <i class="fa fa-upload fa-5x"></i>
+            <h3>Upload File</h3>
+        </span>
+    </div>
+    <div class="bottom">
+        <span>
+            <a href="upload">
+                <p>View details</p>
+                <i class="fa fa-arrow-circle-right"></i>
+            </a>
+        </span>
+    </div>
+    </div>
 
     <div class="d-box">
     <div class="head purple">
