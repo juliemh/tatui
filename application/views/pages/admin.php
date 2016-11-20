@@ -119,6 +119,23 @@
         </div>
     </div>
     <div class="d-box">
+    <div class="head blue">
+        <span>
+            <i class="fa fa-tasks fa-5x"></i>
+            <h3>Manage Users</h3>
+        </span>
+    </div>
+
+    <div class="bottom">
+        <span>
+            <a href="manageusers">
+                <p>View details</p>
+                <i class="fa fa-arrow-circle-right"></i>
+            </a>
+        </span>
+    </div>
+</div>	
+    <div class="d-box">
    <div class="head blue">
     <span>
     <i class="fa fa-tasks fa-5x"></i>
