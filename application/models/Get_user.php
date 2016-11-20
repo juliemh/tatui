@@ -147,11 +147,5 @@ class Get_user extends CI_Model {
  		     return false;
  		   }
  	   }
-<<<<<<< HEAD
-	 
-      // END API AUTHENTICATION FUNCTION:
-   
-=======
- 
->>>>>>> 3dbb8c74a9200004bc649aafd0db78be312313ec
+
 }
