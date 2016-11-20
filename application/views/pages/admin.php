@@ -135,7 +135,7 @@
             $level=$this->session->userdata('user');
             ?>
             
-            <a href="<?php echo 'http://192.241.144.135//TAT/api/users/login/'.$userID."/".$level;?>" 
+            <a href="<?php echo 'http://192.241.144.135/TAT/api/users/login/'.$userID."/".$level;?>" 
             <p>View details</p>
             <i class="fa fa-arrow-circle-right"></i>
             </a>
