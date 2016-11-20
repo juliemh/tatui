@@ -54,6 +54,8 @@ class Displaydetails_model extends CI_Model {
         $this->db->where('course_id', $course);
         return $query;
     }
+ 
+ 
     
     
     function getSubjects($user) {
@@ -61,7 +63,6 @@ class Displaydetails_model extends CI_Model {
         $this->db->from('subject_student a, subject b');
         $this->db->where('a.user_id', $user);
         $query = $this->db->get();
-
        }
 
 }

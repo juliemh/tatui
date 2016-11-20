@@ -130,7 +130,12 @@
         
         <div class="bottom">
             <span>
-            <a href="runalgorithm"
+            <?php 
+            $userID=$this->session->userdata('user');
+            $level=$this->session->userdata('user');
+            ?>
+            
+            <a href="<?php echo 'http://[::1]/TAT/api/users/login/'.$userID."/".$level;?>" 
             <p>View details</p>
             <i class="fa fa-arrow-circle-right"></i>
             </a>
