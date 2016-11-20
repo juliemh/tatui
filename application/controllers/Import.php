@@ -1,8 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
 class Import extends CI_Controller {
-
     public function __construct() {
         parent::__construct();    
         $this->load->helper(array('form', 'url'));
@@ -48,7 +46,6 @@ class Import extends CI_Controller {
         );
         $body = $this->load->view('pages/admin/new_user_email_message',$data,TRUE);
         $this->email->message($body);
-
         $this->email->send();  
     }
   //
@@ -88,9 +85,6 @@ class Import extends CI_Controller {
             'default' => 'Select Table',
             'user' => 'Students',
             'subject_student'    => 'Student Subjects',
-            'project' => 'Project',
-            'course' => 'Course',
-            'semester' => 'Semester'       
           ); 
      return $tables;  
     }
@@ -99,7 +93,7 @@ class Import extends CI_Controller {
     //
     public function read_text($filename) {
        // loads file contents 
-       $textarray = file('./uploads/'.$filename);
+       $textarray = file('/var/lib/mysql-files/uploads/'.$filename);
        return $textarray;
     }
     //
@@ -153,7 +147,7 @@ class Import extends CI_Controller {
           $done = false;
           $error = '';
           //
-          $filelist = directory_map('./uploads/', 1);
+          $filelist = directory_map('/var/lib/mysql-files/uploads/', 1);
           //
           // returns the table selected in the drop down
           //
@@ -175,7 +169,7 @@ class Import extends CI_Controller {
           //
           // get list of table columns
           //
-          $filepath = './uploads/'.$filelist[$fileno];
+          $filepath = '/var/lib/mysql-files/uploads/'.$filelist[$fileno];
           // 
           // loads a list of table names into an array
           //
@@ -212,7 +206,7 @@ class Import extends CI_Controller {
          //
          // gets a list of files in the uploads directory
          //
-         $files = directory_map('./uploads/', 1);
+         $files = directory_map('/var/lib/mysql-files/uploads/', 1);
          //
          // get all the table names from the database
          // $tables = $this->data_driver->get_tables();
