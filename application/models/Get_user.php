@@ -9,7 +9,26 @@ class Get_user extends CI_Model {
                 parent::__construct();
                 $this->load->database();
         }
-   // get user name    
+   //
+   // get all users
+   //
+   public function get_all_users() {
+       $this -> db -> select('*');
+	   $this -> db -> from('user');
+	   $query = $this -> db -> get();
+   
+    if($query -> num_rows() > 0)
+   {
+     return $query->result();
+   }
+   else
+   {
+     return false;
+   }
+   }
+   //
+   // get user name  
+   //  
    public function get_user($userid) {
  	   $this -> db -> select('*');
 	   $this -> db -> from('user');
@@ -26,13 +45,35 @@ class Get_user extends CI_Model {
      return false;
    }
    }
+   //
+   // insert user data without needing to define columns
+   //
+   public function insert($table, $values) {
+          $this->db->set($table, $values);
+          $this->db->insert('mytable');
+   }
+   //
+   // $data = array(
+   //     'title' => $title,
+   //     'name' => $name,
+   //     'date' => $date
+   //);
+   //      UPDATE mytable
+   //      SET title = '{$title}', name = '{$name}', date = '{$date}'
+   //      WHERE id = $id
+   public function update($col, $userid, $data) {
+        $this->db->where($col, $userid);
+        $this->db->update('user', $data);
+   }
+   //
+   //
    // returns if password is found
+   //
    public function check_password($userid, $password) { 
 	   $this -> db -> select('user_id');
 	   $this -> db -> from('user');
 	   $this -> db -> where('password', $password);
 	   $this -> db -> limit(1);
- 
    $query = $this -> db -> get();
  
    if($query -> num_rows() == 1)
@@ -44,7 +85,9 @@ class Get_user extends CI_Model {
      return false;
    }
    }
+   //
    // returns the user access level
+   //
    public function user_level($userid) {  
 	   $this -> db -> select('access_type');
 	   $this -> db -> from('access_type');
@@ -55,22 +98,31 @@ class Get_user extends CI_Model {
           return ($access[0]->access_type);
           }
        else{
-           $access = 'role_not_found';
-           return $access;
+           return NULL;
            }
    }
-   // insert user data
-   public function insert_data($table_name, $data_in) {
-         // inserts and array of strings
-         $this->db->insert_string($table_name, $data_in);   
+   //
+   // set or change the user access level
+   //
+   public function insert_access($userid) {   
+        $added_by = $this->session->userdata('user');
+        
+       	$data = array(
+        'user_id' => $userid,
+        'access_type' => 'student',
+        'added_by_id' => $added_by,
+        'date_changed' => ''
+          );
+        $this->db->insert('access_type', $data);
    }
-   // update user data
-   public function update_data($table_name, $data_in) {
-         // updates and array of strings
-         $this->db->update_string($table_name, $data_in);   
+   //
+   // update or set the user level
+   //
+   public function update_access($userid, $data) {  	   
+      $this->db->where('user_id', $userid);
+      $this->db->update('access_type', $data);
    }
-   
-   // API AUTHENTICATION FUNCTION:
+    // API AUTHENTICATION FUNCTION:
    
    public function auth($password, $user_id) 
  	 {
@@ -95,7 +147,11 @@ class Get_user extends CI_Model {
  		     return false;
  		   }
  	   }
+<<<<<<< HEAD
 	 
       // END API AUTHENTICATION FUNCTION:
    
+=======
+ 
+>>>>>>> 3dbb8c74a9200004bc649aafd0db78be312313ec
 }

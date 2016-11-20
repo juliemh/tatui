@@ -24,8 +24,6 @@
                 echo anchor('addskill', 'Add Skill', 'title="Add Skill"');
                 
                 echo anchor('runalgorithm', 'Run Algorithm', 'title="Run Algorithm"');
-                
-                echo anchor('logout', 'Logout', 'title="Logout"');
 
                 ?>
             </div>
