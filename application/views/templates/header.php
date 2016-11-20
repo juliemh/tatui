@@ -32,7 +32,7 @@
         <header>
           <img class="rmitlogo" src="<?php echo base_url() ?>assets/img/rmitlogo.png" alt="RMIT logo" />     
           <img class="tatalogo" src="<?php echo base_url() ?>assets/img/tatlogo.png" alt="TAT logo" />
-          <div class="logout-button">
+          <div class="logout">
            <?php 
            $this->load->helper(array('form','url'));
             if ($this->session->userdata('user') == TRUE ) {
