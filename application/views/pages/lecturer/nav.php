@@ -4,6 +4,7 @@
         <div class="dropdown">
             <button class="dropbtn">Lecturer Menu</button>
             <div class="dropdown-content">
+		<a href="pages">Dashboard</a>
                 <a href="#">Add Project</a> 
                 <a href="#">Add Skill</a>
                 <?php 
@@ -13,6 +14,7 @@
 				<a href="<?php echo 'http://192.241.144.135/TAT/api/users/login/'.$userID."/".$level;?>" 
 				<p>Run Algorithm</p>
 				</a>
+	    <a href="logout">Logout</a>
             </div>
         </div>
     </div>
