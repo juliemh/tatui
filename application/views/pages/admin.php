@@ -56,12 +56,12 @@
         <div class="head orange">
     <span>
     <i class="fa fa-upload fa-5x"></i>
-    <h3>Import Students</h3>
+    <h3>Import Data</h3>
     </span>
     </div>
         <div class="bottom">
             <span>
-            <a href="#">
+            <a href="import">
             <p>View details</p>
             <i class="fa fa-arrow-circle-right"></i>
             </a>
