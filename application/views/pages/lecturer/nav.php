@@ -9,7 +9,13 @@
             <div class="dropdown-content">
                 <a href="#">Add Project</a> 
                 <a href="#">Add Skill</a>
-                <a href="#">Run Algorithm</a>
+                <?php 
+				$userID=$this->session->userdata('user');
+				$level=$this->session->userdata('user');
+				?>		
+				<a href="<?php echo 'http://192.241.144.135/TAT/api/users/login/'.$userID."/".$level;?>" 
+				<p>Run Algorithm</p>
+				</a>
             </div>
         </div>
     </div>
