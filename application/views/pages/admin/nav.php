@@ -26,7 +26,9 @@
                 $userID=$this->session->userdata('user');
 				$level=$this->session->userdata('user');
 				echo anchor('http://192.241.144.135/TAT/api/users/login/'.$userID."/".$level, 'Run Algorithm', 'title="Run Algorithm"');
-                ?>
+               echo anchor('logout', 'Logout', 'title="Logout"'); 
+		    
+		?>
             </div>
 
         </div>
