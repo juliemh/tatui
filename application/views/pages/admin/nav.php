@@ -23,8 +23,9 @@
 
                 echo anchor('addskill', 'Add Skill', 'title="Add Skill"');
                 
-                echo anchor('runalgorithm', 'Run Algorithm', 'title="Run Algorithm"');
-
+                $userID=$this->session->userdata('user');
+				$level=$this->session->userdata('user');
+				echo anchor('http://192.241.144.135/TAT/api/users/login/'.$userID."/".$level, 'Run Algorithm', 'title="Run Algorithm"');
                 ?>
             </div>
 
