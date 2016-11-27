@@ -48,9 +48,8 @@ class Get_user extends CI_Model {
    //
    // insert user data without needing to define columns
    //
-   public function insert($table, $values) {
-          $this->db->set($table, $values);
-          $this->db->insert('mytable');
+   public function insert_user($table, $data) {
+          $this->db->insert($table, $data);
    }
    //
    // $data = array(
@@ -104,12 +103,11 @@ class Get_user extends CI_Model {
    //
    // set or change the user access level
    //
-   public function insert_access($userid) {   
-        $added_by = $this->session->userdata('user');
-        
+   public function insert_access($userid, $type) {   
+        $added_by = $this->session->userdata('user');     
        	$data = array(
         'user_id' => $userid,
-        'access_type' => 'student',
+        'access_type' => $type,
         'added_by_id' => $added_by,
         'date_changed' => ''
           );
@@ -118,20 +116,18 @@ class Get_user extends CI_Model {
    //
    // update or set the user level
    //
-   public function update_access($userid, $data) {  	   
+   public function update_access($userid, $type) {  	   
       $this->db->where('user_id', $userid);
-      $this->db->update('access_type', $data);
+      $this->db->update('access_type', $type);
    }
     // API AUTHENTICATION FUNCTION:
    
    public function auth($password, $user_id) 
- 	 {
- 	   
+ 	 {	   
  		   $this -> db -> select('password');
  		   $this -> db -> from('user');
  		   $this -> db -> where('user_id', $user_id);
- 		
- 	 
+ 		 	 
  	   $query = $this -> db -> get();
  	   $queryRes=$query->result();  
  	
