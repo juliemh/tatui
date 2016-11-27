@@ -26,10 +26,10 @@ class Import extends CI_Controller {
         $this->load->view('templates/content');
         $this->load->view('templates/footer');
     }
-    //
+  //
     // send mail
     //
-    public function send_password_reset_mail($user_id, $password){
+    public function send_password_mail($user_id, $password){
        
         $from = 'admin@localhost';
         
@@ -47,11 +47,12 @@ class Import extends CI_Controller {
         $body = $this->load->view('pages/admin/new_user_email_message',$data,TRUE);
         $this->email->message($body);
         $this->email->send();  
+   
     }
   //
     // generate new user emails - checks for generic password
     //
-    public function generate_new_password() {
+    public function generate_new_passwords() {
       // all users added with "password" will be automatically sent a welcome message
       // and new password
       $resetpassword = 'password';    
@@ -70,11 +71,12 @@ class Import extends CI_Controller {
                   );
                   $this->get_user->update('user_id', $user_id, $data);
                   // email user new password  
-                  $this->send_password_reset_mail($user_id, $newpassword);
+                  $this->send_password_mail($user_id, $newpassword);
               }
-            
+       
            }
-    
+     
+       
     }
     //
     // load database table
@@ -111,7 +113,7 @@ class Import extends CI_Controller {
                    $this->get_user->insert_access($user->user_id);
               }  
               // generates new password if default value of 'password' is found
-              $this->generate_new_password();                      
+              $this->generate_new_passwords();                      
           }
     }
     //
