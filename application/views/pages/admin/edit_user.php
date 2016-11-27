@@ -2,7 +2,7 @@
 
 <?php 
 $this->load->model('get_user');
-   
+        $this->load->helper(array('form', 'url'));
 //
 // diplays a table of user details from the database
 //
@@ -18,7 +18,7 @@ $this->load->model('get_user');
        echo '<th> User ID </th>';
        echo '<th> First Name </th>';
        echo '<th> Last Name </th>';
-       echo '<th> Password </th>';
+       echo '<th> Reset Password </th>';
        echo '<th> Current Role </th>';
        echo '<th> Access Level </th>'; 
        echo '<th> Commit Changes </th>';      
@@ -29,8 +29,21 @@ $this->load->model('get_user');
         echo'<td>'.$userdetails[0]->firstname.'</td>';
         
         echo'<td>'.$userdetails[0]->lastname.'</td>';
-        
-        echo'<td>'.$userdetails[0]->password.'</td>';
+        //password submission button
+        $data = array(
+             'user_id' => $userdetails[0]->user_id
+        );
+        echo form_open('password/change_password','',$data);
+
+        // password button
+        if ($userdetails[0]->password === 'password') {
+           echo'<td>'.form_submit('mysubmit', 'Issue Password').'</td>';
+        }
+        else
+        {
+            echo'<td>'.form_submit('mysubmit', 'Reset Password').'</td>';
+        }
+        echo form_close();
 
         echo'<td>'.$access_type.'</td>';
         
@@ -40,69 +53,21 @@ $this->load->model('get_user');
         // form head
         
             //
-        echo form_open('edituser/update','',$data); 
+    echo form_open('edituser/update','',$data); 
          //
-         // student
-         //
-        $checkit = FALSE;
-          $_POST['current_user'] = $user;
-        if ( strcmp($access_type, "student") == 0) {
-            $checkit = TRUE;
-        } 
-        $sdata = array(
-            'name'    => 'access_level',
-            'value'   => 'student',
-            'checked' => $checkit
-            ); 
-       $student = form_radio($sdata);
-       //
-          // lecturer
-          //
-         $checkit = FALSE;   
-         if (strcmp($access_type, "lecturer") == 0) {
-            $checkit = TRUE;
-        }  
-         $ldata = array(
-            'name'    => 'access_level',
-            'value'   => 'lecturer',
-            'checked' => $checkit
-            );
-            // admin
-        $checkit = FALSE;
-        if (strcmp($access_type, "admin") == 0) {
-            $checkit = TRUE;
-        } 
-        $lecturer = form_radio($ldata);
-        //
-        // admin
-        //
-        $adata = array(
-            'name'    => 'access_level',
-            'value'   => 'admin',
-            'checked' => $checkit
-            );
-        $admin = form_radio($adata);
-        //
-        // none
-        //
-        $checkit = FALSE;
-        if (strcmp($access_type, "none") == 0) {
-            $checkit = TRUE;
-        }     
-        // none
-        $ndata = array(
-            'name'    => 'access_level',
-            'value'   => 'none',
-            'checked' => $checkit
-            );
-            
-        $none = form_radio($ndata); 
-       
+ 
+    $access_options = array(
+        'none'      =>   'Set Access',
+        'student'    => 'Student',
+        'lecturer'   => 'Lecturer',
+        'admin'      => 'Admin'
+    );
+    echo '<td>'.form_dropdown('access', $access_options, $access_type).'</td>';       
        //
        // writes the table line
        //
-       echo '<td>'.$student." Student".$lecturer." Lecturer".$admin." Admin".$none." None".'</td>';
-       echo'<td>'.form_submit('mysubmit', 'Commit!').'</td>';
+       echo'<td>'.form_submit('submit', 'Commit!').'</td>';
+       echo form_close();
        echo '</tr>';
 echo '</table>'; 
 ?>
