@@ -21,7 +21,7 @@ class Data_driver extends CI_Model {
 // load data from comma delimited file
 //
 public function load_data($tablename, $data) {
-if ($sql = "LOAD DATA INFILE '".$data."' IGNORE INTO TABLE ".$tablename." FIELDS TERMINATED BY ','")
+if ($sql = "LOAD DATA LOCAL INFILE '".$data."' IGNORE INTO TABLE ".$tablename." FIELDS TERMINATED BY ','")
    {
    $this->db->query($sql);
    return TRUE;

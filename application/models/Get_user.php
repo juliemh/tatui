@@ -104,12 +104,13 @@ class Get_user extends CI_Model {
    // set or change the user access level
    //
    public function insert_access($userid, $type) {   
+        $timestamp = date("F j, Y, g:i a");
         $added_by = $this->session->userdata('user');     
        	$data = array(
         'user_id' => $userid,
         'access_type' => $type,
         'added_by_id' => $added_by,
-        'date_changed' => ''
+        'date_changed' => $timestamp
           );
         $this->db->insert('access_type', $data);
    }
