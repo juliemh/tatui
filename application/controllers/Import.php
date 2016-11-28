@@ -110,7 +110,7 @@ class Import extends CI_Controller {
               $user_access = $this->get_user->user_level($user->user_id);
               // inserts new user into table
               if ($user_access == NULL && $user_access == '') {
-                   $this->get_user->insert_access($user->user_id);
+                   $this->get_user->insert_access($user->user_id,'student');
               }  
               // generates new password if default value of 'password' is found
               $this->generate_new_passwords();                      
