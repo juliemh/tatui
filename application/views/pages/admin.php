@@ -1,25 +1,5 @@
 <h1>What would you like to do?</h1>
-    <div class="d-box">
-<div class="head blue">
-    
-    <span>
-    <i class="fa fa-tasks fa-5x"></i>
-    <h3>Add Lecturer</h3>
-    </span>
-    </div>
-        
-        <div class="bottom">
-            <span>
-                <a href="#">
-            <p>View details</p>
-            <i class="fa fa-arrow-circle-right"></i>
-            </a>
-            </span>
-        </div>
-            
-    </div>
-
-    <div class="d-box">
+<div class="d-box">
 <div class="head green">
     <span>
     <i class="fa fa-plus-square fa-5x"></i>
@@ -53,7 +33,7 @@
     </div>
 
     <div class="d-box">
-        <div class="head orange">
+     <div class="head orange">
     <span>
     <i class="fa fa-upload fa-5x"></i>
     <h3>Import Data</h3>
@@ -135,25 +115,7 @@
         </span>
     </div>
 </div>	
-    <div class="d-box">
-   <div class="head blue">
-    <span>
-    <i class="fa fa-tasks fa-5x"></i>
-    <h3>Add Users</h3>
-    </span>
-    </div>
-        
-        <div class="bottom">
-            <span>
-            <a href="#"
-            <p>View details</p>
-            <i class="fa fa-arrow-circle-right"></i>
-            </a>
-            </span>
-        </div>
-            
-    </div>
-    <div class="d-box">
+   <div class="d-box">
    <div class="head gold">
     <span>
     <i class="fa fa-tasks fa-5x"></i>
