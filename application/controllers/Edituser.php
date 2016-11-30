@@ -29,7 +29,7 @@ class Edituser extends CI_Controller {
     // 
     //
     public function update() {
-        $access_type = $this->input->post('access_level');
+        $access_type = $this->input->post('access');
         $user_id = $this->input->post('user');
     //
     $data = array(
@@ -46,7 +46,7 @@ class Edituser extends CI_Controller {
     //
     public function index() {    
          $message = '';
-         $this->call_page($this->input->post('userid'),$message);
+         $this->call_page($this->input->post('userid'), $message);
          
     }
    
