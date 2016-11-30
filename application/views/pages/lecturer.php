@@ -9,7 +9,7 @@
     </div>
         <div class="bottom">
             <span>
-            <a href="#">
+            <a href="addprojectlec">
             <p>View details</p>
             <i class="fa fa-arrow-circle-right"></i>
             </a>
