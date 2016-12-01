@@ -10,8 +10,7 @@ class Addproject extends CI_Controller {
     }
 
     //Johns Contruct Pages Code//
-    public function call_page($data) {
-        $usertype = 'admin';
+     public function call_page($data, $usertype) {
         $this->load->view('templates/header', $data);
         $this->load->view('pages/' . $usertype . '/nav');
         $this->load->view('templates/content');
@@ -19,7 +18,8 @@ class Addproject extends CI_Controller {
     }
 
     function index() {
-        $usertype = 'admin';
+        $usertype = $this->Model_adding_project->getUserType($this->session->userdata('user'));
+        
         if ($this->Model_adding_project->chkempty('course') &&
                 $this->Model_adding_project->chkempty('subject') &&
                 $this->Model_adding_project->chkempty('skill_dictionary')) {
