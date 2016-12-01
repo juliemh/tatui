@@ -139,3 +139,20 @@
             
     </div>
 
+<div class="d-box">
+<div class="head yellow">
+    <span>
+    <i class="fa fa-plus-circle fa-5x"></i>
+    <h3>Add Semester</h3>
+    </span>
+    </div>
+        <div class="bottom">
+            <span>
+            <a href="addsemester">
+            <p>View details</p>
+            <i class="fa fa-arrow-circle-right"></i>
+            </a>
+            </span>
+        </div>
+    </div>
+
