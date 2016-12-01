@@ -41,7 +41,7 @@ class Addproject extends CI_Controller {
                 'message' => '',
                 'includes' => 'pages/' . $usertype . '/addproject_error'
             );
-            $this->call_page($data);
+            $this->call_page($data, $usertype);
         }
     }
 
