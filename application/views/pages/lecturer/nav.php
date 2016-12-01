@@ -5,7 +5,7 @@
             <button class="dropbtn">Lecturer Menu</button>
             <div class="dropdown-content">
 		<a href="pages">Dashboard</a>
-                <a href="addprojectlec">Add Project</a> 
+                <a href="addproject">Add Project</a> 
                 <a href="#">Add Skill</a>
                 <?php 
 				$userID=$this->session->userdata('user');
