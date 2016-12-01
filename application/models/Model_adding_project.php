@@ -143,4 +143,18 @@ class Model_adding_project extends CI_Model {
             return FALSE;
         }
     }
+    
+    function getUserType($userid)
+    {
+        $this->db->select('access_type');
+        $this->db->from('access_type');
+        $this->db->where('user_id', $userid);
+        $this->db->limit(1);
+        $query = $this->db->get();
+        if($query->num_rows() > 0)
+        {
+            $row = $query->row();
+         return $row->access_type;
+        }
+    }
 }
