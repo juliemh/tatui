@@ -22,6 +22,8 @@
                 echo anchor('addproject', 'Add Project', 'title="Add Project"');
 
                 echo anchor('addskill', 'Add Skill', 'title="Add Skill"');
+		
+		echo anchor('addsemester', 'Add Semester', 'title="Add Semester"');
                 
                 $userID=$this->session->userdata('user');
 				$level=$this->session->userdata('user');
