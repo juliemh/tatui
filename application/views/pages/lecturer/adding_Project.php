@@ -55,7 +55,7 @@
 
 
 </div>
-<form id="addproject" method="post" action="./addprojectlec/validate">
+<form id="addproject" method="post" action="./addproject/validate">
 
     <table>  
         <tr>
