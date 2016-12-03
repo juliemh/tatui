@@ -1,4 +1,37 @@
   <h2>Manage your skills here...</h2>
+<div class="message-container">
+
+    <?php
+ 
+    if ($this->session->flashdata()) {
+        $addedMsg = $this->session->flashdata('addedMsg');
+        $msgError = $this->session->flashdata('msgError');
+
+        if (count($addedMsg) > 0) {
+            foreach ($addedMsg as $row => $value) { 
+                    ?>
+                    <div class="alert alert-success">
+                        <button class="close" data-dismiss="alert">x</button>
+                        <?php echo($value); ?>
+                    </div>
+                    <?php
+                }
+            }
+        
+        if (count($msgError) > 0) {
+            foreach ($msgError as $row => $value) {
+                ?>
+                <div class="alert alert-danger">
+                    <button class="close" data-dismiss="alert">x</button>
+                    <?php echo($value); ?>
+                </div>
+                <?php
+            }
+        }
+    }
+
+    ?>
+</div>
   
   <p>All available skills will display here.  Your selected skills will display with a filled in checkbox.</p>
   <p>To update your skills simply make a selection and click Update.  Your screen will refresh with the updated skills.</p>
