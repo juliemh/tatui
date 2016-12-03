@@ -54,6 +54,8 @@ class Registerprojects_model extends CI_Model {
         $startDate = '';
         $finishDate = '';
         $query = $this->getSemesterDates($semesterid);
+        if(!empty($query))
+        {
         foreach ($query as $row) {
             $startDate = $row['start'];
             $finishDate = $row['finish'];
@@ -77,6 +79,7 @@ class Registerprojects_model extends CI_Model {
             return $result;
         } else {
             return FALSE;
+        }
         }
     }
 
