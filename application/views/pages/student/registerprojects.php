@@ -152,12 +152,19 @@
             }
        $('#semester').click(function () {
             proj.html("");
+            if($('#semester').val() !== '')
+            {
             var postData = {
                 course: $('#course').val(),
                 subject: $('#subject').val(),
                 semester: $(this).val()
             };
             displayProjects(postData);
+        }
+        else
+        {
+            alert('There are no semester values for the course and subject combination.  Try a different combination');
+        }
         });
     });
     </script>
