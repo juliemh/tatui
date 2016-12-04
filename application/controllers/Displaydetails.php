@@ -27,15 +27,18 @@ class Displaydetails extends CI_Controller {
             'includes' => 'pages/' . $usertype . '/displayDetails'
         );
         $data['details'] = $this->Displaydetails_model->getData($user);
-        if ($this->Displaydetails_model->userEnrolled($user)) {
+      //  if ($this->Displaydetails_model->userEnrolled($user)) {
             $data['course'] = $this->Displaydetails_model->checkUserCourse($user);
             $data['subjects'] = $this->Displaydetails_model->getSubjects($user);
-        } 
-        else
-        {
-            $data['course'] = '';
-            $data['subjects'] = '';
-        }
+            $data['skills'] = $this->Displaydetails_model->getSkills($user);
+        //} 
+        //else
+        //{
+        //    $data['course'] = '';
+        //    $data['subjects'] = '';
+        //
+        //}
+        //    print_r($data);
         $this->call_page($data);
     }
 
