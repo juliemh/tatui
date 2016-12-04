@@ -45,10 +45,10 @@ class Addcourse extends CI_Controller {
             $this->Addcourse_model->add_course($data);
 
             $this->session->set_flashdata('msg', 'The course ' . $courseid . ' was successfully added');
-            redirect('addcourse');
+            redirect('addcourse', 'refresh');
         } else { // course already exists 
             $this->session->set_flashdata('msg1', 'This Course already exists');
-            redirect('addcourse');
+            redirect('addcourse','refresh');
         }
     }
    
