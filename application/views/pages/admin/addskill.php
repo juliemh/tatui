@@ -1,76 +1,55 @@
-
-<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
-
-<div id="page-wrapper">
-
-    <?php
-    $this->load->helper(array('form', 'url'));
-
-    echo validation_errors();
-
-
-    echo "<h2>Add Skill</h2>";
-
-    echo form_open('addskill/skill_validate');
-    $skillid = array(
-        'name' => 'skillid',
-        'value' => set_value('skillid'),
-        'size' => '25'
-    );
-    ?>
-    <div class="login-container">
-
-        <div class='login-username-container'>
-            <?php
-            echo form_label('Skill Id ');
-            echo form_input($skillid);
+  <div class="formcontainer">
+        <h2>Add a new skill  here...</h2>
+          <?php
+        $msg1 = $this->session->flashdata('msg1');
+        if ((isset($msg1)) && (!empty($msg1))) {
             ?>
-        </div>
-        <div class='login-username-container'>
-            <?php
-            $skillname = array(
-                'name' => 'skillname',
-                'value' => set_value('skillname'),
-                'size' => '25'
-            );
-            echo form_label('Skill Name ');
-            echo form_input($skillname);
+            <div class="alert alert-danger">
+                <button class="close" data-dismiss="alert">x</button>
+            <?php print_r($msg1); ?>
+            </div>
+            <?php }
+        ?>
+
+        <?php
+        $msg = $this->session->flashdata('msg');
+        if ((isset($msg)) && (!empty($msg))) {
             ?>
-        </div>
-        <div class='login-username-container'> 
-            <?php
-            $skilldescription = array(
-                'name' => 'skilldescription',
-                'value' => set_value('skilldescription'),
-                'size' => '60'
-            );
-            echo form_label('Skill Description ');
-            echo form_input($skilldescription);
-            ?>
-        </div>
-        <div class='login-username-container'>
-            <?php
-            $skillgroup = array(
-                'programming' => 'Programming',
-                'webdesign' => 'WebDesigning ',
-                'database' => 'Database Platform',
-                'mobiledevelopment' => 'Mobile Development',
-            );
-            echo form_label('Skill Group');
-            echo form_dropdown('skillgroup', $skillgroup);
-            ?>
-        </div>
-        <div class='login-username-container'>
-            <?php
-            echo form_submit('submit', 'Add Skill');
-            echo form_submit('submit', 'Delete Skill');
-            echo form_close();
-            ?>
-              <div class='login-username-container'>
-                    <a href="pages" class="btn logoutbtn">Back to Dashboard</a>
-                </div>   
-        </div>
+            <div class="alert alert-success">
+                <button class="close" data-dismiss="alert">x</button>
+            <?php print_r($msg); ?>
+            </div>
+            <?php }
+        ?>
 
     </div>
 
+        <form method="post" action="./addskill/validate" id="addskill">
+            <div class="login-container">
+                <div class='login-username-container'>
+                    <label>Skill ID</label>
+                    <input autofocus  type='text' name="skillid" required>
+                </div>
+                <div class='login-username-container'>
+                    <label>Skill Description</label>
+                    <input  type='text' name="description" required>
+                </div>
+                <div class='login-username-container'>
+                    <label>Category</label>
+                    <select  type='text' name="category" required>
+                        <option>Select</option>
+                    <option name="programming" value="Programming">Programming</option>
+                    <option name="webdesign" value="Webdesign">Web Design</option>
+                    <option name="database" value="Database">Database</option>
+                    <option name="mobile" value="Mobile Development">Mobile Development</option>
+                    </select>
+                </div>
+               
+                <div class='login-username-container'>
+                    <a href="pages" class="btn logoutbtn">Back to Dashboard</a>
+                    <button name="submit" class="btn logoutbtn">  Submit  </button>
+                </div>   
+            </div>
+        </form>
 
+      
