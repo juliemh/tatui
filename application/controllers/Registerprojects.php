@@ -345,6 +345,8 @@ class Registerprojects extends CI_Controller {
         $courseid = $this->input->post('course');
         $subjectid = $this->input->post('subject');
         $semesterid = $this->input->post('semester');
+        if($courseid != '' || $subjectid != '' || $semesterid != '')
+        {
         $output = '<table width="90%"><tr><th></th><th>Project ID</th><th>Project Name</th>
                                 <th>Project Description</th><th>Skills Required</th><th>Preference</th></tr>';
         $teammates = array();
@@ -429,9 +431,7 @@ class Registerprojects extends CI_Controller {
             }
             $this->session->set_userdata('updateValues', $updateValues);
             $this->session->set_userdata('teammates', $teammates);
-
-
-
+            
             $this->mergeUserData($query);
         } else {
             if (is_array($query) && count($query) > 0) {
@@ -463,6 +463,7 @@ class Registerprojects extends CI_Controller {
             }
             $output .= '</tabe>';
             echo $output;
+        }
         }
     }
 
@@ -586,6 +587,8 @@ class Registerprojects extends CI_Controller {
 
             $mergedData = $this->mergeSkills($query);
         }
+        if(!empty($mergedData))
+        {
         $htmlData = $this->mergeData($updateValues, $mergedData);
 
         $output = '<table width="90%"><tr><th></th><th>Project ID</th><th>Project Name</th>
@@ -632,5 +635,5 @@ class Registerprojects extends CI_Controller {
         $output .= '</table>';
         echo($output);
     }
-
+    }
 }
