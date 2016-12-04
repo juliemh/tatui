@@ -63,7 +63,6 @@ class Manageskills_model extends CI_Model {
     }
 
     function updateSkills($data) {
-        // print_r($data);
         foreach ($data as $row => $value) {
             $user = $data['user_id'];
             $skill = $data['skill_id'];
@@ -86,7 +85,6 @@ class Manageskills_model extends CI_Model {
                     $this->db->update('student_skill');
                 }
             } else {
-               // print_r($udata);
                 $this->db->insert('student_skill', $udata);
             }
         }

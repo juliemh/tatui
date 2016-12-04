@@ -7,7 +7,8 @@ class Manageskills extends CI_Controller {
         $this->load->helper(array('form', 'url', 'html'));
         $this->load->model('Manageskills_model');
     }
-   public function call_page($data) {
+
+    public function call_page($data) {
         $usertype = 'student';
         $this->load->view('templates/header', $data);
         $this->load->view('pages/' . $usertype . '/nav');
@@ -22,7 +23,7 @@ class Manageskills extends CI_Controller {
         $skills = array();
         $usertype = 'student';
         if ($this->Manageskills_model->chkempty('skill_dictionary')) {
-           if ($this->Manageskills_model->chkempty('student_skill') && $this->Manageskills_model->chkUserHasSkills($user)) {
+            if ($this->Manageskills_model->chkempty('student_skill') && $this->Manageskills_model->chkUserHasSkills($user)) {
                 $finalSkills = $this->Manageskills_model->getUserSkills($user);
             } else {
                 $skills = $this->Manageskills_model->getAllSkills();
@@ -55,6 +56,9 @@ class Manageskills extends CI_Controller {
     function validate() {
         $user = $this->session->userdata('user');
         $skillcheck = $this->input->post('skillcheck');
+        $addedMsg = array();
+        $msgError = array();
+
 
         if (count($skillcheck) > 0) {
             foreach ($skillcheck as $row) {
@@ -65,16 +69,29 @@ class Manageskills extends CI_Controller {
                         'skill_id' => $row
                     );
                     $this->Manageskills_model->deleteSkills($deleteSkill);
+                        $msg = $row.' has been deleted';
+                        array_push($addedMsg, $msg);
+                     
                 } else {
                     $skilldata = array(
                         'user_id' => $user,
                         'skill_id' => $row,
                         'skilllevel' => $this->input->post($row)
                     );
-                  $this->Manageskills_model->updateSkills($skilldata);//  print_r($skilldata);
+                    $this->Manageskills_model->updateSkills($skilldata);
+                        $msg = 'Your preference for skill '. $row .' has been added.';
+                        array_push($addedMsg, $msg);
+                    } 
                 }
-            }         
-        }
-        redirect('manageskills');
+            }
+        
+        $data = array(
+            'addedMsg' => $addedMsg,
+            'msgError' => $msgError
+        );
+
+        $this->session->set_flashdata($data);
+        redirect('manageskills', 'refreah');
     }
+
 }
