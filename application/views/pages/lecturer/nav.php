@@ -6,7 +6,7 @@
             <div class="dropdown-content">
 		<a href="pages">Dashboard</a>
                 <a href="addproject">Add Project</a> 
-                <a href="#">Add Skill</a>
+                <a href="addskill">Add Skill</a>
                 <?php 
 				$userID=$this->session->userdata('user');
 				$level=$this->session->userdata('user');
