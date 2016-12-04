@@ -4,18 +4,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Addskill extends CI_Controller {
 
-    function __construct() {
+    public function __construct() {
         parent::__construct();
-        //$this->load->library('session');
-        $this->load->helper(array('form', 'url', 'html'));
-        $this->load->library('form_validation');
+
+        $this->load->model('Addskill_model');
     }
 
-    public function call_page() {
-        $usertype = 'admin';
+    public function call_page($usertype) {
+          
+     
         // page data to be passed will be usertype by default
         $data = array(
-            'page_title' => 'Add Skills',
+            'page_title' => 'Add Skill',
             'title' => $usertype,
             'message' => '',
             'includes' => 'pages/' . $usertype . '/addskill'
@@ -26,56 +26,33 @@ class Addskill extends CI_Controller {
         $this->load->view('templates/footer');
     }
 
-    // checks login using in built validation
-
-
-    public function index() {
-
-        if ($this->form_validation->run() == FALSE) {
-
-            $this->call_page();
-        }
+    function index() {
+        
+        $usertype = $this->Addskill_model->getUserType($this->session->userdata('user'));
+        $this->call_page($usertype);
     }
 
-    public function skill_validate() {
+    function validate() {
+        $skill = strtoupper($this->input->post('skillid'));
+        $category = $this->input->post('category');
+        $description = $this->input->post('description');
 
-        $this->load->library('form_validation');
-        $this->form_validation->set_rules('skillid', 'skillid', 'required|max_length[15]');
-        $this->form_validation->set_rules('skillname', 'SkillName', 'required|max_length[25]');
-        $this->form_validation->set_rules('skilldescription', 'skilldescription', 'required|max_length[70]');
-        $this->form_validation->set_rules('skillgroup', 'skillgroup', 'required');
+        $is_valid = $this->Addskill_model->validate($skill);
 
-        if ($this->form_validation->run()) {
+        if (!$is_valid)/* If not valid then the course doesn't exist */ {
+            $data = array(
+                'skill_id' => $skill,
+                'skill_category' => $category,
+                'skill_description' => $description
+            );
+            $this->Addskill_model->add_skill($data);
 
-            $this->load->model('Getskills_model', '', TRUE);
-            $skill = $this->input->post('skillid');
-            $skillExisted = $this->Getskills_model->getskill($skill);
-            if ($skillExisted) {
-
-                echo "Skill Already Existed";
-                $this->load->helper('form');
-                $this->load->view('pages/AddSkill');
-            } else {
-                $data = array(
-                    'skill_id' => $this->input->post('skillid'),
-                    'skill_category' => $this->input->post('skillgroup'),
-                    'skill_description' => $this->input->post('skilldescription')
-                );
-
-                $inserted = $this->Getskills_model->insert_skill($data);
-                if ($inserted) {
-
-                    echo "Inserted Successfully";
-                    $this->load->view('addSkill');
-                } else {
-
-                    echo "Please contact Support Team";
-                }
-            }
-        } else {
-
-            echo "Please contact Support Team";
+            $this->session->set_flashdata('msg', 'The skill ' . $skill . ' was successfully added');
+            redirect('addskill', 'refresh');
+        } else { 
+            $this->session->set_flashdata('msg1', 'This Skill already exists');
+            redirect('addskill', 'refresh');
         }
     }
-
+   
 }
