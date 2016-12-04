@@ -26,7 +26,7 @@
     </div>
         <div class="bottom">
             <span>
-            <a href="#">
+            <a href="addskill">
             <p>View details</p>
             <i class="fa fa-arrow-circle-right"></i>
             </a>
